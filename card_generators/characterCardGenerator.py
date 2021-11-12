@@ -57,11 +57,21 @@ class CharacterGenerator(BaseGenerator):
 
         texture_param = {}
         texture_param['start_W'] = 22
-        texture_param['start_H'] = 195
+        texture_param['start_H'] = 235
         texture_param['file'] = f'{self.desc_background_image}'
         texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 137
+        texture_param['resize_H'] = 97
         texture_params.append(texture_param)
+
+        # main stats_bar texture
+        texture_param = {}
+        texture_param['start_W'] = 22
+        texture_param['start_H'] = 195
+        texture_param['file'] = f'{self.chars_art_folder}char_card_bar.png'
+        texture_param['resize_W'] = 137
+        texture_param['resize_H'] = 37
+        texture_params.append(texture_param)
+
 
         # secondary stats
         param = {}
@@ -110,6 +120,17 @@ class CharacterGenerator(BaseGenerator):
         texture_param['resize_W'] = 111
         texture_param['resize_H'] = 32
         texture_params.append(texture_param)
+
+        #main stats bar
+        param = {}
+        param['start_W'] = 50
+        param['start_H'] = 450
+        param['border_W'] = 350
+        param['border_H'] = 100
+        param['facecolor'] = 'none'
+        param['alligned'] = 35
+        params.append(param)
+
         # texture_param = {}
         # texture_param['start_W'] = 22
         # texture_param['start_H'] = 35
@@ -144,12 +165,10 @@ class CharacterGenerator(BaseGenerator):
         param['border_H'] = 33
         param['facecolor'] = 'none'
         param['alligned'] = 0
-
         self.create_border(ax, param)
-
-        self.refresh_img()
-        plt.close()
-        plt.savefig(f'output/champions/{char.name}', bbox_inches='tight', pad_inches=0, transparent=True)
+        # self.refresh_img()
+        # plt.close()
+        plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
 
         temp_image = Image.open(self.tmp_file)
         plt.close()
@@ -159,27 +178,52 @@ class CharacterGenerator(BaseGenerator):
         self.write_name_and_race(temp_image, char.name, char.race)
 
         self.refresh_img()
+        plt.close()
+        self.write_main_stats_bar(temp_image, 'Main stats')
+
+        self.refresh_img()
 
         #show and save image
-        plt.savefig(f'output/skills/{char.name}', bbox_inches='tight', pad_inches=0, transparent=True)
-
+        plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         plt.show()
+        plt.close()
+
+        temp_image = Image.open(self.tmp_file).resize((W, H))
+        temp_image.save(f'output/champions/{char.name}.png')
 
 
     def write_name_and_race(self, temp_image, name, race):
-            fontsize = 16
+            fontsize = 17
+            print(len(name)+len(race))
             # TODO: switch to python 3.10 and use match
-            if len(name) > 20:
-                return print('description too long, not processed (max description lenght is 24 chars)')
+            if len(name)+len(race) > 20:
+                return print('name and race too long, not processed (max name and race length is 20 chars)')
 
-            if len(name) > 13:
+            if len(name)+len(race) >= 13:
                 fontsize = 13
 
 
             font = ImageFont.truetype('resources/fonts/end.ttf', fontsize)
             draw = ImageDraw.Draw(temp_image)
             w, h = font.getsize(name)
-            draw.text(((144 - w) / 2, (325 - h) / 2), f'{name}, {race}', (7, 0, 0), font=font)
+            if race:
+                draw.text(((128 - w) / 2, (325 - h) / 2), f'{name}, {race}', (7, 0, 0), font=font)
+            else:
+                draw.text(((128 - w) / 2, (325 - h) / 2), f'{name}', (7, 0, 0), font=font)
+
+            # save temp image
+            temp_image.save(self.tmp_file)
+
+
+    def write_main_stats_bar(self, temp_image, bar_name):
+            fontsize = 21
+
+
+            font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+            draw = ImageDraw.Draw(temp_image)
+            w, h = font.getsize(bar_name)
+            draw.text(((178 - w) / 2, (430 - h) / 2), f'{bar_name}', (255, 255, 255), font=font ,stroke_width=1, stroke_fill='black')
+
             # save temp image
             temp_image.save(self.tmp_file)
 
