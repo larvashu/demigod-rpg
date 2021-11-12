@@ -4,17 +4,19 @@ import matplotlib.pyplot as plt
 from card_generators.baseGenerator import BaseGenerator
 
 char_background = "try1"
+
+
 class CharacterGenerator(BaseGenerator):
     def generate(self, char):
         W, H = (1240, 877)
 
-        im = np.array(Image.open(f'{self.img_folder}characters_backgrounds/{char_background}.png').resize((W,H)))
+        im = np.array(Image.open(f'{self.img_folder}characters_backgrounds/{char_background}.png').resize((W, H)))
         fig, ax = plt.subplots()
         ax.imshow(im)
 
-        #region borders and textures
+        # region borders and textures
         params = []
-        texture_params =[]
+        texture_params = []
 
         # main border
         param = {}
@@ -36,7 +38,7 @@ class CharacterGenerator(BaseGenerator):
         param['alligned'] = 35
         params.append(param)
 
-        #portrait
+        # portrait
         texture_param = {}
         texture_param['start_W'] = 22
         texture_param['start_H'] = 31
@@ -90,7 +92,6 @@ class CharacterGenerator(BaseGenerator):
         texture_param['resize_H'] = 39
         texture_params.append(texture_param)
 
-
         # secondary stats
         param = {}
         param['start_W'] = 445
@@ -129,8 +130,7 @@ class CharacterGenerator(BaseGenerator):
         texture_param['resize_H'] = 259
         texture_params.append(texture_param)
 
-
-        #name
+        # name
         texture_param = {}
         texture_param['start_W'] = 35
         texture_param['start_H'] = 147
@@ -139,7 +139,7 @@ class CharacterGenerator(BaseGenerator):
         texture_param['resize_H'] = 32
         texture_params.append(texture_param)
 
-        #main stats bar
+        # main stats bar
         param = {}
         param['start_W'] = 50
         param['start_H'] = 450
@@ -149,7 +149,7 @@ class CharacterGenerator(BaseGenerator):
         param['alligned'] = 35
         params.append(param)
 
-        #secondary stats bar
+        # secondary stats bar
         param = {}
         param['start_W'] = 445
         param['start_H'] = 45
@@ -159,7 +159,7 @@ class CharacterGenerator(BaseGenerator):
         param['alligned'] = 35
         params.append(param)
 
-        #masteries stats bar
+        # masteries stats bar
         param = {}
         param['start_W'] = 834
         param['start_H'] = 45
@@ -169,7 +169,6 @@ class CharacterGenerator(BaseGenerator):
         param['alligned'] = 35
         params.append(param)
 
-
         # texture_param = {}
         # texture_param['start_W'] = 22
         # texture_param['start_H'] = 35
@@ -178,15 +177,13 @@ class CharacterGenerator(BaseGenerator):
         # texture_param['resize_H'] = 137
         # texture_params.append(texture_param)
 
-
-        #endregion
+        # endregion
 
         for p in params:
             self.create_border(ax, p)
         plt.axis('off')
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         plt.close()
-
 
         temp_image = Image.open(self.tmp_file)
         for tp in texture_params:
@@ -205,7 +202,55 @@ class CharacterGenerator(BaseGenerator):
         param['facecolor'] = 'none'
         param['alligned'] = 0
         self.create_border(ax, param)
-        # self.refresh_img()
+
+        # main_stats_total_input borders
+        params = []
+        for frame in range(3):
+            param = {}
+            param['start_W'] = 124
+            param['start_H'] = 222 + frame * 25
+            param['border_W'] = 20
+            param['border_H'] = 20
+            param['facecolor'] = 'white'
+            param['alligned'] = 35
+            params.append(param)
+
+        # main_stats_bonus_input borders
+        # for frame in range(3):
+        #     param = {}
+        #     param['start_W'] = 90
+        #     param['start_H'] = 222 + frame*25
+        #     param['border_W'] = 20
+        #     param['border_H'] = 20
+        #     param['facecolor'] = 'white'
+        #     param['alligned'] = 35
+        #     params.append(param)
+
+        # main_stats_base_input borders
+        for frame in range(3):
+            param = {}
+            param['start_W'] = 252
+            param['start_H'] = 55 + frame * 25
+            param['border_W'] = 20
+            param['border_H'] = 20
+            param['facecolor'] = 'white'
+            param['alligned'] = 35
+            params.append(param)
+
+        for frame in range(3):
+            param = {}
+            param['start_W'] = 282
+            param['start_H'] = 55 + frame * 25
+            param['border_W'] = 20
+            param['border_H'] = 20
+            param['facecolor'] = 'white'
+            param['alligned'] = 35
+            params.append(param)
+
+        print(params)
+        for p in params:
+            self.create_border(ax, p)
+
         # plt.close()
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
 
@@ -222,16 +267,19 @@ class CharacterGenerator(BaseGenerator):
 
         self.refresh_img()
         plt.close()
+        self.write_stats_sing(temp_image)
+
+        self.refresh_img()
+        plt.close()
         self.write_secondary_stats_bar(temp_image, 'Secondary')
 
         self.refresh_img()
         plt.close()
         self.write_masteries_bar(temp_image, 'Mastery')
 
-
         self.refresh_img()
 
-        #show and save image
+        # show and save image
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         plt.show()
         plt.close()
@@ -239,61 +287,92 @@ class CharacterGenerator(BaseGenerator):
         temp_image = Image.open(self.tmp_file).resize((W, H))
         temp_image.save(f'output/champions/{char.name}.png')
 
-
     def write_name_and_race(self, temp_image, name, race):
-            fontsize = 17
-            print(len(name)+len(race))
-            # TODO: switch to python 3.10 and use match
-            if len(name)+len(race) > 20:
-                return print('name and race too long, not processed (max name and race length is 20 chars)')
+        fontsize = 17
+        print(len(name) + len(race))
+        # TODO: switch to python 3.10 and use match
+        if len(name) + len(race) > 20:
+            return print('name and race too long, not processed (max name and race length is 20 chars)')
 
-            if len(name)+len(race) >= 13:
-                fontsize = 13
+        if len(name) + len(race) >= 13:
+            fontsize = 13
 
+        font = ImageFont.truetype('resources/fonts/end.ttf', fontsize)
+        draw = ImageDraw.Draw(temp_image)
+        w, h = font.getsize(name)
+        if race:
+            draw.text(((128 - w) / 2, (325 - h) / 2), f'{name}, {race}', (7, 0, 0), font=font)
+        else:
+            draw.text(((128 - w) / 2, (325 - h) / 2), f'{name}', (7, 0, 0), font=font)
 
-            font = ImageFont.truetype('resources/fonts/end.ttf', fontsize)
-            draw = ImageDraw.Draw(temp_image)
-            w, h = font.getsize(name)
-            if race:
-                draw.text(((128 - w) / 2, (325 - h) / 2), f'{name}, {race}', (7, 0, 0), font=font)
-            else:
-                draw.text(((128 - w) / 2, (325 - h) / 2), f'{name}', (7, 0, 0), font=font)
-
-            # save temp image
-            temp_image.save(self.tmp_file)
+        # save temp image
+        temp_image.save(self.tmp_file)
 
     def write_main_stats_bar(self, temp_image, bar_name):
-            fontsize = 21
+        fontsize = 21
 
+        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+        draw = ImageDraw.Draw(temp_image)
+        w, h = font.getsize(bar_name)
+        draw.text(((178 - w) / 2, (430 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
+                  stroke_fill='black')
 
-            font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-            draw = ImageDraw.Draw(temp_image)
-            w, h = font.getsize(bar_name)
-            draw.text(((178 - w) / 2, (430 - h) / 2), f'{bar_name}', (255, 255, 255), font=font ,stroke_width=1, stroke_fill='black')
-
-            # save temp image
-            temp_image.save(self.tmp_file)
+        # save temp image
+        temp_image.save(self.tmp_file)
 
     def write_secondary_stats_bar(self, temp_image, bar_name):
-            fontsize = 21
+        fontsize = 21
 
+        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+        draw = ImageDraw.Draw(temp_image)
+        w, h = font.getsize(bar_name)
+        draw.text(((495 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
+                  stroke_fill='black')
 
-            font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-            draw = ImageDraw.Draw(temp_image)
-            w, h = font.getsize(bar_name)
-            draw.text(((495 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font ,stroke_width=1, stroke_fill='black')
-
-            # save temp image
-            temp_image.save(self.tmp_file)
+        # save temp image
+        temp_image.save(self.tmp_file)
 
     def write_masteries_bar(self, temp_image, bar_name):
-            fontsize = 21
+        fontsize = 21
 
+        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+        draw = ImageDraw.Draw(temp_image)
+        w, h = font.getsize(bar_name)
+        draw.text(((810 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
+                  stroke_fill='black')
 
-            font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-            draw = ImageDraw.Draw(temp_image)
-            w, h = font.getsize(bar_name)
-            draw.text(((810 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font ,stroke_width=1, stroke_fill='black')
+        # save temp image
+        temp_image.save(self.tmp_file)
 
-            # save temp image
-            temp_image.save(self.tmp_file)
+    def write_stats_sing(self, temp_image):
+        fontsize = 20
+
+        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+        draw = ImageDraw.Draw(temp_image)
+        signs = "Ą", "ą", "Ć"
+        i = 0
+        for sign in signs:
+            i += 1
+            w, h = font.getsize(sign)
+            draw.text(((75 - w) / 2, ((485 - h) / 2) + i*25), f'{sign}', (255, 255, 255), font=font, stroke_width=1,stroke_fill='black')
+
+            if sign == "Ą":
+                fontsize = 15
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Strength')
+                draw.text(((170 - w) / 2, ((485 - h) / 2) + i * 25), f'Strength', (55, 55, 55), font=font)
+
+            if sign == "ą":
+                fontsize = 15
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Agility')
+                draw.text(((170 - w) / 2, ((485 - h) / 2) + i * 25), f'Agility', (55, 55, 55), font=font)
+
+            if sign == "Ć":
+                fontsize = 15
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Intelligence')
+                draw.text(((170 - w) / 2, ((485 - h) / 2) + i * 25), f'Intelligence', (55, 55, 55), font=font)
+
+        # save temp image
+        temp_image.save(self.tmp_file)
