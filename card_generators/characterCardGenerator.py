@@ -1,5 +1,5 @@
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFont, ImageDraw
 import matplotlib.pyplot as plt
 from card_generators.baseGenerator import BaseGenerator
 
@@ -44,14 +44,6 @@ class CharacterGenerator(BaseGenerator):
         texture_param['resize_W'] = 139
         texture_param['resize_H'] = 137
         texture_params.append(texture_param)
-
-        # texture_param = {}
-        # texture_param['start_W'] = 22
-        # texture_param['start_H'] = 28
-        # texture_param['file'] = f'{self.chars_art_folder}{char.name}.jpg'
-        # texture_param['resize_W'] = 137
-        # texture_param['resize_H'] = 139
-        # texture_params.append(texture_param)
 
         # main stats
         param = {}
@@ -153,12 +145,41 @@ class CharacterGenerator(BaseGenerator):
         param['facecolor'] = 'none'
         param['alligned'] = 0
 
-        p = param
-        self.create_border(ax, p)
+        self.create_border(ax, param)
 
         self.refresh_img()
         plt.close()
         plt.savefig(f'output/champions/{char.name}', bbox_inches='tight', pad_inches=0, transparent=True)
 
+        temp_image = Image.open(self.tmp_file)
+        plt.close()
+
+        self.refresh_img()
+        plt.close()
+        self.write_name_and_race(temp_image, char.name, char.race)
+
+        self.refresh_img()
+
+        #show and save image
+        plt.savefig(f'output/skills/{char.name}', bbox_inches='tight', pad_inches=0, transparent=True)
 
         plt.show()
+
+
+    def write_name_and_race(self, temp_image, name, race):
+            fontsize = 16
+            # TODO: switch to python 3.10 and use match
+            if len(name) > 20:
+                return print('description too long, not processed (max description lenght is 24 chars)')
+
+            if len(name) > 13:
+                fontsize = 13
+
+
+            font = ImageFont.truetype('resources/fonts/end.ttf', fontsize)
+            draw = ImageDraw.Draw(temp_image)
+            w, h = font.getsize(name)
+            draw.text(((144 - w) / 2, (325 - h) / 2), f'{name}, {race}', (7, 0, 0), font=font)
+            # save temp image
+            temp_image.save(self.tmp_file)
+
