@@ -72,6 +72,24 @@ class CharacterGenerator(BaseGenerator):
         texture_param['resize_H'] = 37
         texture_params.append(texture_param)
 
+        # secondary stats_bar texture
+        texture_param = {}
+        texture_param['start_W'] = 180
+        texture_param['start_H'] = 31
+        texture_param['file'] = f'{self.chars_art_folder}char_card_bar.png'
+        texture_param['resize_W'] = 137
+        texture_param['resize_H'] = 39
+        texture_params.append(texture_param)
+
+        # masteries texture
+        texture_param = {}
+        texture_param['start_W'] = 336
+        texture_param['start_H'] = 31
+        texture_param['file'] = f'{self.chars_art_folder}char_card_bar.png'
+        texture_param['resize_W'] = 137
+        texture_param['resize_H'] = 39
+        texture_params.append(texture_param)
+
 
         # secondary stats
         param = {}
@@ -86,10 +104,10 @@ class CharacterGenerator(BaseGenerator):
         # secondary stats texture
         texture_param = {}
         texture_param['start_W'] = 180
-        texture_param['start_H'] = 31
+        texture_param['start_H'] = 73
         texture_param['file'] = f'{self.desc_background_image}'
         texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 301
+        texture_param['resize_H'] = 259
         texture_params.append(texture_param)
 
         # masteries
@@ -105,10 +123,10 @@ class CharacterGenerator(BaseGenerator):
         # masteries texture
         texture_param = {}
         texture_param['start_W'] = 336
-        texture_param['start_H'] = 31
+        texture_param['start_H'] = 73
         texture_param['file'] = f'{self.desc_background_image}'
         texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 301
+        texture_param['resize_H'] = 259
         texture_params.append(texture_param)
 
 
@@ -130,6 +148,27 @@ class CharacterGenerator(BaseGenerator):
         param['facecolor'] = 'none'
         param['alligned'] = 35
         params.append(param)
+
+        #secondary stats bar
+        param = {}
+        param['start_W'] = 445
+        param['start_H'] = 45
+        param['border_W'] = 350
+        param['border_H'] = 100
+        param['facecolor'] = 'none'
+        param['alligned'] = 35
+        params.append(param)
+
+        #masteries stats bar
+        param = {}
+        param['start_W'] = 834
+        param['start_H'] = 45
+        param['border_W'] = 350
+        param['border_H'] = 100
+        param['facecolor'] = 'none'
+        param['alligned'] = 35
+        params.append(param)
+
 
         # texture_param = {}
         # texture_param['start_W'] = 22
@@ -182,6 +221,15 @@ class CharacterGenerator(BaseGenerator):
         self.write_main_stats_bar(temp_image, 'Main stats')
 
         self.refresh_img()
+        plt.close()
+        self.write_secondary_stats_bar(temp_image, 'Secondary')
+
+        self.refresh_img()
+        plt.close()
+        self.write_masteries_bar(temp_image, 'Mastery')
+
+
+        self.refresh_img()
 
         #show and save image
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
@@ -214,7 +262,6 @@ class CharacterGenerator(BaseGenerator):
             # save temp image
             temp_image.save(self.tmp_file)
 
-
     def write_main_stats_bar(self, temp_image, bar_name):
             fontsize = 21
 
@@ -227,3 +274,26 @@ class CharacterGenerator(BaseGenerator):
             # save temp image
             temp_image.save(self.tmp_file)
 
+    def write_secondary_stats_bar(self, temp_image, bar_name):
+            fontsize = 21
+
+
+            font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+            draw = ImageDraw.Draw(temp_image)
+            w, h = font.getsize(bar_name)
+            draw.text(((495 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font ,stroke_width=1, stroke_fill='black')
+
+            # save temp image
+            temp_image.save(self.tmp_file)
+
+    def write_masteries_bar(self, temp_image, bar_name):
+            fontsize = 21
+
+
+            font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+            draw = ImageDraw.Draw(temp_image)
+            w, h = font.getsize(bar_name)
+            draw.text(((810 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font ,stroke_width=1, stroke_fill='black')
+
+            # save temp image
+            temp_image.save(self.tmp_file)

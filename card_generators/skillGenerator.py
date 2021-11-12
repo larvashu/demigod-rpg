@@ -176,27 +176,27 @@ class SkillGenerator(BaseGenerator):
 
     #drawing skill methods
     def draw_cooldown(self, ax):
-        image_borders = patches.Circle((259, 368), 65, linewidth=2, edgecolor='black', facecolor='purple')
+        image_borders = patches.Circle((258, 367), 65, linewidth=2, edgecolor='black', facecolor='purple')
         ax.add_patch(image_borders)
         return ax
 
     def write_cooldown_cost(self, temp_image, cd_cost):
-        font = ImageFont.truetype('resources/fonts/end.ttf',46)
+        font = ImageFont.truetype('resources/fonts/twb.ttf',57)
         draw = ImageDraw.Draw(temp_image)
-        draw.text((225,295), cd_cost, (255, 255, 255), font=font,stroke_width=1, stroke_fill='black')
+        draw.text((220,313), cd_cost, (255, 255, 255), font=font,stroke_width=1, stroke_fill='black')
         #save temp image
         temp_image.save(self.tmp_file)
 
     def draw_action_points_cost(self, ax):
-        image_borders = patches.Circle((1, 1), 65, linewidth=2, edgecolor='black', facecolor='#3776ab')
+        image_borders = patches.Circle((-9, 7), 65, linewidth=2, edgecolor='black', facecolor='#3776ab')
         ax.add_patch(image_borders)
         return ax
 
     #writing data methods
     def write_ap_cost(self, temp_image, ap_cost):
-        font = ImageFont.truetype('resources/fonts/end.ttf',46)
+        font = ImageFont.truetype('resources/fonts/twb.ttf',57)
         draw = ImageDraw.Draw(temp_image)
-        draw.text((15,-18), ap_cost, (255, 255, 255), font=font,stroke_width=1, stroke_fill='black')
+        draw.text((7,-2), ap_cost, (255, 255, 255), font=font,stroke_width=1, stroke_fill='black')
         #save temp image
         temp_image.save(self.tmp_file)
 
@@ -218,19 +218,19 @@ class SkillGenerator(BaseGenerator):
         temp_image.save(self.tmp_file)
 
     def write_type(self, temp_image, type, card_type):
-        fontsize = 16
+        fontsize = 22
         #TODO: switch to python 3.10 and use match
         if len(card_type) > 22:
             return print('type too long, not processed (max type length is 22 chars)')
 
         if len(card_type) > 13:
-            fontsize = 15
+            fontsize = 20
 
         if len(card_type) > 17:
-            fontsize = 14
+            fontsize = 18
 
         text = f'{card_type} - {type}'
-        font = ImageFont.truetype('resources/fonts/end.ttf',fontsize)
+        font = ImageFont.truetype('resources/fonts/twb.ttf',fontsize)
         draw = ImageDraw.Draw(temp_image)
         w, h = font.getsize(text)
         draw.text(((260-w)/2,(445-h)/2), text, (255, 255, 255), font=font, stroke_width=1, stroke_fill='black')
