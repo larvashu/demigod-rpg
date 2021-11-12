@@ -1,9 +1,9 @@
 #type, art_image, description, ap_cost, cd_cost, card_type, card_text, range, aoe
 
 class Skill():
-    type = None
     art_image = None
     title = None
+    type = None
     ap_cost = None
     cd_cost = None
     card_type = None

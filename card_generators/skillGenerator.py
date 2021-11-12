@@ -43,7 +43,7 @@ class SkillGenerator(BaseGenerator):
         texture_param = {}
         texture_param['start_W'] = 22
         texture_param['start_H'] = 78
-        texture_param['file'] = f'{self.art_folder}{skill.art_image}.jpg'
+        texture_param['file'] = f'{self.skills_art_folder}{skill.title}.jpg'
         texture_param['resize_W'] = textures_resize_width
         texture_param['resize_H'] = 134
         texture_params.append(texture_param)
@@ -61,7 +61,7 @@ class SkillGenerator(BaseGenerator):
         texture_param = {}
         texture_param['start_W'] = 22
         texture_param['start_H'] = -9 + self.y_offset
-        texture_param['file'] =  f'{self.art_folder}type_back.jpg'
+        texture_param['file'] =  f'{self.skills_art_folder}type_back.jpg'
         texture_param['resize_W'] = textures_resize_width
         texture_param['resize_H'] = 41
         texture_params.append(texture_param)
@@ -98,7 +98,7 @@ class SkillGenerator(BaseGenerator):
         texture_param = {}
         texture_param['start_W'] = 30
         texture_param['start_H'] = 202
-        texture_param['file'] =  f'{self.art_folder}type_back.jpg'
+        texture_param['file'] =  f'{self.skills_art_folder}type_back.jpg'
         texture_param['resize_W'] = 197
         texture_param['resize_H'] = 41
         texture_params.append(texture_param)
@@ -110,7 +110,7 @@ class SkillGenerator(BaseGenerator):
         ax.imshow(im)
 
         for p in params:
-            self.create_border(ax, p.get('start_W'), p.get('start_H'), p.get('border_W'), p.get('border_H'), p.get('alligned'), p.get('facecolor'))
+            self.create_border(ax, p)
         plt.axis('off')
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         plt.close()
@@ -126,7 +126,7 @@ class SkillGenerator(BaseGenerator):
 
         #create type, ap, and cooldown borders
         p = params[5]
-        self.create_border(ax, p.get('start_W'), p.get('start_H'), p.get('border_W'), p.get('border_H'), p.get('alligned'), p.get('facecolor'))
+        self.create_border(ax, p)
         self.draw_action_points_cost(ax)
         self.draw_cooldown(ax)
 
