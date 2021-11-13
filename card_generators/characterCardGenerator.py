@@ -14,240 +14,25 @@ class CharacterGenerator(BaseGenerator):
         fig, ax = plt.subplots()
         ax.imshow(im)
 
-        # region borders and textures
-        params = []
-        texture_params = []
+        params, texture_params = self.compute_borders_and_textures(char, W, H)
 
-        # main border
-        param = {}
-        param['start_W'] = 3
-        param['start_H'] = 4
-        param['border_W'] = W - 7
-        param['border_H'] = H - 9
-        param['facecolor'] = 'none'
-        param['alligned'] = 0
-        params.append(param)
+        #add borders and textures layers
+        for i in range(5):
+            borders = []
+            textures = []
 
-        # portrait border
-        param = {}
-        param['start_W'] = 50
-        param['start_H'] = 40
-        param['border_W'] = 350
-        param['border_H'] = 350
-        param['facecolor'] = 'white'
-        param['alligned'] = 35
-        params.append(param)
+            for par in params:
+                if par.get('layer') == i:
+                    borders.append(par)
 
-        # portrait
-        texture_param = {}
-        texture_param['start_W'] = 22
-        texture_param['start_H'] = 31
-        texture_param['file'] = f'{self.chars_art_folder}{char.name}.jpg'
-        texture_param['resize_W'] = 139
-        texture_param['resize_H'] = 137
-        texture_params.append(texture_param)
+            for tpar in texture_params:
+                if tpar.get('layer') == i:
+                    textures.append(tpar)
 
-        # main stats
-        param = {}
-        param['start_W'] = 50
-        param['start_H'] = 450
-        param['border_W'] = 350
-        param['border_H'] = 350
-        param['facecolor'] = 'white'
-        param['alligned'] = 35
-        params.append(param)
+            self.add_layer(ax, borders, textures)
+            im, fig, ax = self.refresh_img()
 
-        texture_param = {}
-        texture_param['start_W'] = 22
-        texture_param['start_H'] = 235
-        texture_param['file'] = f'{self.desc_background_image}'
-        texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 97
-        texture_params.append(texture_param)
-
-        # main stats_bar texture
-        texture_param = {}
-        texture_param['start_W'] = 22
-        texture_param['start_H'] = 195
-        texture_param['file'] = f'{self.chars_art_folder}char_card_bar.png'
-        texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 37
-        texture_params.append(texture_param)
-
-        # secondary stats_bar texture
-        texture_param = {}
-        texture_param['start_W'] = 180
-        texture_param['start_H'] = 31
-        texture_param['file'] = f'{self.chars_art_folder}char_card_bar.png'
-        texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 39
-        texture_params.append(texture_param)
-
-        # masteries texture
-        texture_param = {}
-        texture_param['start_W'] = 336
-        texture_param['start_H'] = 31
-        texture_param['file'] = f'{self.chars_art_folder}char_card_bar.png'
-        texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 39
-        texture_params.append(texture_param)
-
-        # secondary stats
-        param = {}
-        param['start_W'] = 445
-        param['start_H'] = 40
-        param['border_W'] = 350
-        param['border_H'] = 760
-        param['facecolor'] = 'white'
-        param['alligned'] = 35
-        params.append(param)
-
-        # secondary stats texture
-        texture_param = {}
-        texture_param['start_W'] = 180
-        texture_param['start_H'] = 73
-        texture_param['file'] = f'{self.desc_background_image}'
-        texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 259
-        texture_params.append(texture_param)
-
-        # masteries
-        param = {}
-        param['start_W'] = 834
-        param['start_H'] = 40
-        param['border_W'] = 350
-        param['border_H'] = 760
-        param['facecolor'] = 'white'
-        param['alligned'] = 35
-        params.append(param)
-
-        # masteries texture
-        texture_param = {}
-        texture_param['start_W'] = 336
-        texture_param['start_H'] = 73
-        texture_param['file'] = f'{self.desc_background_image}'
-        texture_param['resize_W'] = 137
-        texture_param['resize_H'] = 259
-        texture_params.append(texture_param)
-
-        # name
-        texture_param = {}
-        texture_param['start_W'] = 35
-        texture_param['start_H'] = 147
-        texture_param['file'] = f'{self.desc_background_image}'
-        texture_param['resize_W'] = 111
-        texture_param['resize_H'] = 32
-        texture_params.append(texture_param)
-
-        # main stats bar
-        param = {}
-        param['start_W'] = 50
-        param['start_H'] = 450
-        param['border_W'] = 350
-        param['border_H'] = 100
-        param['facecolor'] = 'none'
-        param['alligned'] = 35
-        params.append(param)
-
-        # secondary stats bar
-        param = {}
-        param['start_W'] = 445
-        param['start_H'] = 45
-        param['border_W'] = 350
-        param['border_H'] = 100
-        param['facecolor'] = 'none'
-        param['alligned'] = 35
-        params.append(param)
-
-        # masteries stats bar
-        param = {}
-        param['start_W'] = 834
-        param['start_H'] = 45
-        param['border_W'] = 350
-        param['border_H'] = 100
-        param['facecolor'] = 'none'
-        param['alligned'] = 35
-        params.append(param)
-
-        # texture_param = {}
-        # texture_param['start_W'] = 22
-        # texture_param['start_H'] = 35
-        # texture_param['file'] = f'{self.chars_art_folder}{char.name}.jpg'
-        # texture_param['resize_W'] = 137
-        # texture_param['resize_H'] = 137
-        # texture_params.append(texture_param)
-
-        # endregion
-
-        for p in params:
-            self.create_border(ax, p)
-        plt.axis('off')
-        plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
-        plt.close()
-
-        temp_image = Image.open(self.tmp_file)
-        for tp in texture_params:
-            temp_image = self.paste_texture(temp_image, tp.get('start_W'), tp.get('start_H'), tp.get('file'),
-                                            tp.get('resize_W'), tp.get('resize_H'))
-        temp_image.save(self.tmp_file)
-
-        im, fig, ax = self.refresh_img()
-
-        # name
-        param = {}
-        param['start_W'] = 35
-        param['start_H'] = 145
-        param['border_W'] = 111
-        param['border_H'] = 33
-        param['facecolor'] = 'none'
-        param['alligned'] = 0
-        self.create_border(ax, param)
-
-        # main_stats_total_input borders
-        params = []
-        for frame in range(3):
-            param = {}
-            param['start_W'] = 124
-            param['start_H'] = 222 + frame * 25
-            param['border_W'] = 20
-            param['border_H'] = 20
-            param['facecolor'] = 'white'
-            param['alligned'] = 35
-            params.append(param)
-
-        # main_stats_bonus_input borders
-        # for frame in range(3):
-        #     param = {}
-        #     param['start_W'] = 90
-        #     param['start_H'] = 222 + frame*25
-        #     param['border_W'] = 20
-        #     param['border_H'] = 20
-        #     param['facecolor'] = 'white'
-        #     param['alligned'] = 35
-        #     params.append(param)
-
-        # main_stats_base_input borders
-        for frame in range(3):
-            param = {}
-            param['start_W'] = 252
-            param['start_H'] = 55 + frame * 25
-            param['border_W'] = 20
-            param['border_H'] = 20
-            param['facecolor'] = 'white'
-            param['alligned'] = 35
-            params.append(param)
-
-        for frame in range(3):
-            param = {}
-            param['start_W'] = 282
-            param['start_H'] = 55 + frame * 25
-            param['border_W'] = 20
-            param['border_H'] = 20
-            param['facecolor'] = 'white'
-            param['alligned'] = 35
-            params.append(param)
-
-        print(params)
+        params = self.compute_grid()
         for p in params:
             self.create_border(ax, p)
 
@@ -263,19 +48,29 @@ class CharacterGenerator(BaseGenerator):
 
         self.refresh_img()
         plt.close()
-        self.write_main_stats_bar(temp_image, 'Main stats')
+        self.write_main_stats_bar(temp_image, 'Primary')
 
         self.refresh_img()
         plt.close()
-        self.write_stats_sing(temp_image)
+        signs = ["Ą", "ą", "Ć"]
+        self.write_sings(temp_image, signs, 80, 180, 465, 25, 15, 25)
+
+        signs = ["ę",   "Ń"]
+        self.write_sings(temp_image,signs, 387, 455, 160, 25, 14, 22)
+
+        signs = ["Ę","ć", ]
+        self.write_sings(temp_image,signs, 387, 455, 160+150, 25, 14, 22)
+
+        signs = ["ł", "Ł", "ń" ]
+        self.write_sings(temp_image,signs, 387, 455, 160+300, 25, 14, 22)
 
         self.refresh_img()
         plt.close()
-        self.write_secondary_stats_bar(temp_image, 'Secondary')
+        self.write_secondary_stats_text_and_bar(temp_image, 'Secondary')
 
         self.refresh_img()
         plt.close()
-        self.write_masteries_bar(temp_image, 'Mastery')
+        self.write_masteries_bar(temp_image, 'Masteries')
 
         self.refresh_img()
 
@@ -289,7 +84,6 @@ class CharacterGenerator(BaseGenerator):
 
     def write_name_and_race(self, temp_image, name, race):
         fontsize = 17
-        print(len(name) + len(race))
         # TODO: switch to python 3.10 and use match
         if len(name) + len(race) > 20:
             return print('name and race too long, not processed (max name and race length is 20 chars)')
@@ -309,7 +103,7 @@ class CharacterGenerator(BaseGenerator):
         temp_image.save(self.tmp_file)
 
     def write_main_stats_bar(self, temp_image, bar_name):
-        fontsize = 21
+        fontsize = 24
 
         font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
         draw = ImageDraw.Draw(temp_image)
@@ -320,7 +114,7 @@ class CharacterGenerator(BaseGenerator):
         # save temp image
         temp_image.save(self.tmp_file)
 
-    def write_secondary_stats_bar(self, temp_image, bar_name):
+    def write_secondary_stats_text_and_bar(self, temp_image, bar_name):
         fontsize = 21
 
         font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
@@ -328,6 +122,29 @@ class CharacterGenerator(BaseGenerator):
         w, h = font.getsize(bar_name)
         draw.text(((495 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
                   stroke_fill='black')
+
+        fontsize = 12
+        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+        w, h = font.getsize('Base')
+        draw.text(((532 - w) / 2, (169 - h) / 2), f'Base', (55, 55, 55), font=font)
+
+        fontsize = 12
+        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+        w, h = font.getsize('Bonus')
+        draw.text(((597 - w) / 2, (169 - h) / 2), f'Bonus', (55, 55, 55), font=font)
+
+        fontsize = 12
+        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+        w, h = font.getsize('Base')
+        for i in range(119):
+            draw.text(((392 - w) / 2+i, (310 - h) / 2), f'-', (0, 0, 0), font=font)
+
+        fontsize = 12
+        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+        w, h = font.getsize('Base')
+        for i in range(119):
+            draw.text(((392 - w) / 2+i, (460 - h) / 2), f'-', (0, 0, 0), font=font)
+
 
         # save temp image
         temp_image.save(self.tmp_file)
@@ -344,35 +161,198 @@ class CharacterGenerator(BaseGenerator):
         # save temp image
         temp_image.save(self.tmp_file)
 
-    def write_stats_sing(self, temp_image):
-        fontsize = 20
+    def write_sings(self, temp_image, signs,text_w_start, w_start,x_start,space,sign_size,font_size):
 
-        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
         draw = ImageDraw.Draw(temp_image)
-        signs = "Ą", "ą", "Ć"
+
         i = 0
         for sign in signs:
+            fontsize = font_size
+            font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
             i += 1
             w, h = font.getsize(sign)
-            draw.text(((75 - w) / 2, ((485 - h) / 2) + i*25), f'{sign}', (255, 255, 255), font=font, stroke_width=1,stroke_fill='black')
+            draw.text(((text_w_start - w) / 2, ((x_start - h) / 2) + i*space), f'{sign}', (255, 255, 255), font=font, stroke_width=1,stroke_fill='black')
 
             if sign == "Ą":
-                fontsize = 15
+                fontsize = sign_size
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Strength')
-                draw.text(((170 - w) / 2, ((485 - h) / 2) + i * 25), f'Strength', (55, 55, 55), font=font)
+                draw.text(((w_start - w) / 2, ((x_start - h) / 2) + i * space), f'Strength', (55, 55, 55), font=font)
 
             if sign == "ą":
-                fontsize = 15
+                fontsize = sign_size
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Agility')
-                draw.text(((170 - w) / 2, ((485 - h) / 2) + i * 25), f'Agility', (55, 55, 55), font=font)
+                draw.text(((w_start - w) / 2, ((x_start - h) / 2) + i * space), f'Agility', (55, 55, 55), font=font)
 
             if sign == "Ć":
-                fontsize = 15
+                fontsize = sign_size
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Intelligence')
-                draw.text(((170 - w) / 2, ((485 - h) / 2) + i * 25), f'Intelligence', (55, 55, 55), font=font)
+                draw.text(((w_start - w) / 2, ((x_start - h) / 2) + i * space), f'Intelligence', (55, 55, 55), font=font)
+
+            if sign == "ć":
+                fontsize = sign_size
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Crit')
+                draw.text(((w_start - w-7) / 2, ((x_start - h) / 2) + i * space), f'Critic', (5, 5, 5), font=font)
+
+            if sign == "Ę":
+                fontsize = 11
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Accuracy')
+                draw.text(((w_start - w+6) / 2, ((x_start - h) / 2) + i * space), f'Accuracy', (5, 5, 5), font=font)
+
+            if sign == "ę":
+                fontsize = 10
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Perception')
+                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Perception', (5, 5, 5), font=font)
+
+            if sign == "Ł":
+                fontsize = 12
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Speed')
+                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Speed', (5, 5, 5), font=font)
+
+            if sign == "Ń":
+                fontsize = 10
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Charisma')
+                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Charisma', (5, 5, 5), font=font)
+
+            if sign == "ł":
+                fontsize = 12
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('HP')
+                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'HP', (5, 5, 5), font=font)
+
+            if sign == "ń":
+                fontsize = 12
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                w, h = font.getsize('Actions')
+                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Actions', (5, 5, 5), font=font)
+
 
         # save temp image
         temp_image.save(self.tmp_file)
+
+        # main border
+
+    def compute_borders_and_textures(self, char, W, H):
+            dic = {}
+            #main frame
+            dic["border_main"] = [3,4,W-7,H-9,'none',0,0]
+
+            #portrait
+            dic["border_portrait"] = [50, 40, 350, 350, 'white', 35, 0]
+            dic["texture_portrait"] = [22,31,f'{self.chars_art_folder}{char.name}.jpg', 139, 137,0]
+
+            #main stats
+            dic["border_main_stats"] = [50,450,350,350,'white', 35, 0]
+            dic["texture_main_stats"] = [22,235, f'{self.desc_background_image}', 137, 97,0]
+            dic["texture_main_stats_bar"] = [22,195,f'{self.chars_art_folder}char_card_bar.png', 137, 37,0]
+            dic["border_ms_bar"] = [50,450,350,100,'none',35,0]
+
+            #secondary stats
+            dic["border_secondary_stats"] = [445,40,350,760,'white',35,0]
+            dic["texture_secondary_bar"] = [180,31,f'{self.chars_art_folder}char_card_bar.png',137, 39,0]
+            dic["texture_secondary_stats"] = [180,73,f'{self.desc_background_image}', 137,259,0]
+            dic["border_ss_bar"] = [445,45,350,100, 'none',35,0]
+
+            #masteries
+            dic["texture_masteries_bar"] = [336, 31, f'{self.chars_art_folder}char_card_bar.png', 137,39,0]
+            dic["border_masteries"] = [834,40,350,760,'white',35,0]
+            dic["texture_masteries"] = [336,73,f'{self.desc_background_image}', 137,259,0]
+            dic["border_m_bar"] = [834,45,350,100,'none',35,0]
+
+            #name
+            dic["texture_name"] = [35,147,f'{self.desc_background_image}', 111, 32,0]
+            dic["border_name"] = [35,145,111,33,'none',0,1]
+
+            borders = []
+            textures = []
+            for item in dic:
+                if "texture" in item:
+                    textures.append(item)
+                if "border" in item:
+                    borders.append(item)
+
+            params = []
+            texture_params = []
+
+            for item in borders:
+                param = {}
+                param['start_W'] = dic[item][0]
+                param['start_H'] = dic[item][1]
+                param['border_W'] = dic[item][2]
+                param['border_H'] = dic[item][3]
+                param['facecolor'] = dic[item][4]
+                param['alligned'] = dic[item][5]
+                param['layer'] = dic[item][6]
+                params.append(param)
+
+            for item in textures:
+                texture_param = {}
+                texture_param['start_W'] = dic[item][0]
+                texture_param['start_H'] = dic[item][1]
+                texture_param['file'] = dic[item][2]
+                texture_param['resize_W'] = dic[item][3]
+                texture_param['resize_H'] = dic[item][4]
+                texture_param['layer'] = dic[item][5]
+                texture_params.append(texture_param)
+            return params, texture_params
+
+    def compute_grid(self):
+        dic = {}
+        params = []
+        #main stats
+        for i in range(3):
+            dic[f"border_secondary_main_stats_{i}"] = [129, 210 + i * 25, 20, 20, 'white', 35, 0]
+
+        #secondary stats_stats
+        for j in range(3):
+            for i in range(2):
+                dic[f"border_secondary_bonus_stats_{j}-{i}"] = [255, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
+
+            for i in range(2):
+                dic[f"border_secondary_total_stats_{j}-{i}"] = [285, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
+
+        dic[f"border_secondary_bonus_stats_-1"] = [255, 60+75 + 5 * 25, 20, 20, 'white', 35, 0]
+        dic[f"border_secondary_bonus_stats_-2"] = [285, 60+75 + 5 * 25, 20, 20, 'white', 35, 0]
+
+        # for i in range(2):
+        #     dic[f"border_secondary_bonus_stats_{i}"] = [255, 110 + i * 25, 20, 20, 'white', 35, 0]
+        #
+        # for i in range(2):
+        #     dic[f"border_secondary_total_stats_{i}"] = [285, 110 + i * 25, 20, 20, 'white', 35, 0]
+
+
+        for item in dic:
+                param = {}
+                param['start_W'] = dic[item][0]
+                param['start_H'] = dic[item][1]
+                param['border_W'] = dic[item][2]
+                param['border_H'] = dic[item][3]
+                param['facecolor'] = dic[item][4]
+                param['alligned'] = dic[item][5]
+                param['layer'] = dic[item][6]
+                params.append(param)
+
+        return params
+
+    def add_layer(self, ax, params, texture_params):
+        #draw borders
+        for p in params:
+            self.create_border(ax, p)
+        plt.axis('off')
+        plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
+        plt.close()
+
+        #paste textures
+        temp_image = Image.open(self.tmp_file)
+        for tp in texture_params:
+            temp_image = self.paste_texture(temp_image, tp.get('start_W'), tp.get('start_H'), tp.get('file'),
+                                            tp.get('resize_W'), tp.get('resize_H'))
+        temp_image.save(self.tmp_file)
+
