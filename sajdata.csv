@@ -1,0 +1,15 @@
+Cienioskok;shadow;1;3;Akcja;(Darmowy jesli wykonywany po ruchu).                                                     Przemiesc sie za plecy celu.;4 {hex_symbol};;
+Unik;shadow;0;1;Reakcja;{Zr} % na unikniecie ciosu.      Mozesz wydac 1 PA by zwiekszyc szanse o 20%.;N/D;;
+Od tylu;shadow;-;-;Pasyw;Gdy znajdujesz sie za celem:      +10 WW i +20 krytyka.;N/D;;
+Prosty sZtylet;item;1;1;Przedmiot - zwykly;Obrazenia: {S}-3 + 1k4.               Krytyk: +5.                              Krytyk: Obrazenia * 2                                Krytyk: Ignoruje (1) pancerza. ;1 {hex_symbol};;
+Kijobrot;mist;2;2;Akcja;WW +10 % szans na obrocenie przeciwnika w swoja strone.      Mozesz przyciagnac go o 1 {hex_symbol}.        Przeciwnik ten traci 1 PA. ;3 {hex_symbol};;
+DwurecZny topor;item;3;2;Przedmiot - zwykly;Obrazenia: S+1k10                           Krytyk: S+1k4 obrazen. Stale obniza pancerz celu o 1.;1 {hex_symbol};;
+MglarZ;mist;1;-;Podtrzymywana (Mag: 3);Aktywuj: Roztaczasz mgle.                     We mgle wszystkie ataki procz Twoich maja - 20.                           We mgle zyskujesz 1 szybkosci.;Do 2 {hex_symbol}. ;;
+Wilk mgielny;mist;0;2;Akcja;Przemiesc sie na dowolne zamglone pole.;12 {hex_symbol};;
+Zwadziak;item;2;1;Przedmiot - rzadki;Obrazenia: {S}-2 + 1k6.               Trafienie: 25% na powalenie.                                Krytyk: +1k6 obrazen.;2 {hex_symbol};;
+Zew krwi;fire;-;-;Pasyw;Za kazdym razem gdy zadasz obrazenia: Usun 1 dowolny token oczekiwania ze swoich umiejetnosci.;N/D;;
+Zamach;fire;3;3;Akcja;Zatakuj wszystkich przeciwnikow w okol siebie (WW + 5).;Otaczajace {hex_symbol};;
+SZalencza szarza;fire;1;5;Akcja;Przemiesc sie o max 5 {hex_symbol}. Wykonaj rzut przeciwstawny na K za kazdy cel po drodze: Przegrany upada. ;5 {hex_symbol};;
+Wiatr we wlosach;fire;0;5;Akcja;Twoj nastepny atak kosztuje (2) PA mniej.;N/D;;
+Dzgniecie;shadow;3;4;Akcja;Test na WW: Zadaj S+3k4 obrazen. Krytyk: Obrazenia * 2.               Ignoruje (2) pancerza.;1 {hex_symbol}. Tylko w plecy.;;
+Forma dymna;mist;1;10;Podtrzymywana (Mag: 3);Jest niewrazliwy. Nie atakujesz.    W formie: 2 PA by wyciszyc przeciwnika. (Przciwstawny na SW) .; 2 {hex_symbol}.;;

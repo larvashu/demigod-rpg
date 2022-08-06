@@ -1,2 +1,15 @@
-Shadowbolt;shadow;3;3;Magical;Deal 5 {attack_symbol} to an enemy on {hex_symbol}.;7;;
-Healing touch;light;4;2;Magical ;Restore 3 + 1 k6 healt to target.;1;7;
+Kocie ruchy;shadow;1;3;Akcja;(Darmowy jesli wykonywany po ruchu).                                                     Przemiesc sie za plecy celu.;4 {hex_symbol};;
+Unik;shadow;0;1;Reakcja;[Zr] na unikniecie ciosu.      Mozesz wydac 1 PA by zwiekszyc szanse o 20%.;N/D;;
+Od tylu;shadow;-;-;Pasyw;Gdy znajdujesz sie za celem:      +10 WW i +20 krytyka.;N/D;;
+Prosty sZtylet;item;1;2;Przedmiot - zwykly;Obrazenia: {S}-3 + 1k4.               Krytyk: +5.                              Krytyk: Obrazenia * 2                                Krytyk: Ignoruje (1) pancerza. ;1 {hex_symbol};;
+Kijobrocik;mist;2;2;Akcja: Kij;[WW+10]: Obroc przeciwnika w swoja strone.      Mozesz przyciagnac go o 2 {hex_symbol}.        Przeciwnik ten traci 1 PA. ;3 {hex_symbol};;
+DwurecZny topor;item;3;-;Przedmiot - zwykly;Obrazenia: S+1k10                           Krytyk: S+1k4 obrazen. Stale obniza pancerz celu o 1.;1 {hex_symbol};;
+Roztoczenie mgly;mist;1;-;Podtrzymywana (Mag: 3);Aktywuj: Roztaczasz mgle.                     We mgle wszystkie ataki procz Twoich maja - 20.                           We mgle zyskujesz 1 szybkosci.;Do 2 {hex_symbol}. ;;
+Mglany wilk;mist;0;2;Akcja;Przemiesc sie na dowolne zamglone pole.;-;;
+Zwadziak;item;2;-;Przedmiot - rzadki;Obrazenia: {S}-2 + 1k6.               Trafienie: 20% na powalenie.                                Krytyk: +1k6 obrazen.;2 {hex_symbol};;
+Zew krwi;fire;-;-;Pasyw;Za kazdym razem gdy zadasz obrazenia: Usun 1 dowolny token oczekiwania ze swoich umiejetnosci.;N/D;;
+Zamach;fire;3;3;Akcja;[WW + 5]: Zatakuj wszystkich przeciwnikow w okol siebie.;Otaczajace {hex_symbol};;
+Patoszarza;fire;1;5;Akcja;Przemiesc sie o max 7 {hex_symbol}.          [K] za kazdy cel po drodze: Przegrany upada. ;7 {hex_symbol};;
+Wiatr we wlosach;fire;0;5;Akcja;Twoj nastepny atak kosztuje (2) PA mniej.;N/D;;
+PoderZniecie gardla;shadow;2;4;Akcja;[WW]: Zadaj S+3k4 obrazen. Krytyk: Obrazenia * 2.               Ignoruje (2) pancerza.;1 {hex_symbol}. Tylko w plecy.;;
+Sublimacja;mist;1;10;Podtrzymywana (Mag: 3);Jestes niewrazliwy. Nie atakujesz.    [2PA - SW (Przciwstawny):] Przestrasz cel.; 2 {hex_symbol}.;;

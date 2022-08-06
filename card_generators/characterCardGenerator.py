@@ -1,6 +1,9 @@
+from random import randrange
+
+import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
-import matplotlib.pyplot as plt
+
 from card_generators.baseGenerator import BaseGenerator
 
 char_background = "try1"
@@ -55,13 +58,13 @@ class CharacterGenerator(BaseGenerator):
         signs = ["Ą", "ą", "Ć"]
         self.write_sings(temp_image, signs, 80, 180, 465, 25, 15, 25)
 
-        signs = ["ę",   "Ń"]
+        signs = ["ę", "Ń"]
         self.write_sings(temp_image,signs, 387, 455, 160, 25, 14, 22)
 
-        signs = ["Ę","ć", ]
+        signs = ["Ę","ć"]
         self.write_sings(temp_image,signs, 387, 455, 160+150, 25, 14, 22)
 
-        signs = ["ł", "Ł", "ń" ]
+        signs = ["ł", "Ł", "ń"]
         self.write_sings(temp_image,signs, 387, 455, 160+300, 25, 14, 22)
 
         self.refresh_img()
@@ -70,8 +73,8 @@ class CharacterGenerator(BaseGenerator):
 
         self.refresh_img()
         plt.close()
-        self.write_masteries_bar(temp_image, 'Masteries')
-
+        # self.write_masteries_bar(temp_image, 'Masteries')
+        #
         self.refresh_img()
 
         # show and save image
@@ -85,19 +88,26 @@ class CharacterGenerator(BaseGenerator):
     def write_name_and_race(self, temp_image, name, race):
         fontsize = 17
         # TODO: switch to python 3.10 and use match
+        if not race:
+            race = ""
         if len(name) + len(race) > 20:
             return print('name and race too long, not processed (max name and race length is 20 chars)')
 
         if len(name) + len(race) >= 13:
-            fontsize = 13
+            fontsize = 11
+
+        if len(name) + len(race) >= 10:
+            fontsize = 12
+
 
         font = ImageFont.truetype('resources/fonts/end.ttf', fontsize)
         draw = ImageDraw.Draw(temp_image)
         w, h = font.getsize(name)
         if race:
-            draw.text(((128 - w) / 2, (325 - h) / 2), f'{name}, {race}', (7, 0, 0), font=font)
+            w, h = font.getsize(name+race)
+            draw.text(((175 - w) / 2, (325 - h) / 2), f'{name}, {race}', (7, 0, 0), font=font)
         else:
-            draw.text(((128 - w) / 2, (325 - h) / 2), f'{name}', (7, 0, 0), font=font)
+            draw.text(((175 - w) / 2, (325 - h) / 2), f'{name}', (7, 0, 0), font=font)
 
         # save temp image
         temp_image.save(self.tmp_file)
@@ -120,29 +130,29 @@ class CharacterGenerator(BaseGenerator):
         font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
         draw = ImageDraw.Draw(temp_image)
         w, h = font.getsize(bar_name)
-        draw.text(((495 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
+        draw.text(((655 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
                   stroke_fill='black')
 
         fontsize = 12
         font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
         w, h = font.getsize('Base')
-        draw.text(((532 - w) / 2, (169 - h) / 2), f'Base', (55, 55, 55), font=font)
+        draw.text(((892 - w) / 2, (169 - h) / 2), f'Total', (55, 55, 55), font=font)
 
         fontsize = 12
         font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
         w, h = font.getsize('Bonus')
-        draw.text(((597 - w) / 2, (169 - h) / 2), f'Bonus', (55, 55, 55), font=font)
+        draw.text(((807 - w) / 2, (169 - h) / 2), f'Bonus', (55, 55, 55), font=font)
 
         fontsize = 12
         font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
         w, h = font.getsize('Base')
-        for i in range(119):
+        for i in range(280):
             draw.text(((392 - w) / 2+i, (310 - h) / 2), f'-', (0, 0, 0), font=font)
 
         fontsize = 12
         font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
         w, h = font.getsize('Base')
-        for i in range(119):
+        for i in range(280):
             draw.text(((392 - w) / 2+i, (460 - h) / 2), f'-', (0, 0, 0), font=font)
 
 
@@ -171,7 +181,16 @@ class CharacterGenerator(BaseGenerator):
             font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
             i += 1
             w, h = font.getsize(sign)
-            draw.text(((text_w_start - w) / 2, ((x_start - h) / 2) + i*space), f'{sign}', (255, 255, 255), font=font, stroke_width=1,stroke_fill='black')
+            draw.text(((text_w_start - w) / 2, ((x_start - h) / 2) + i*space), f'{sign}', (5, 5, 5), font=font)
+            if not["Ą", "ą", "Ć"] == signs:
+
+                fontsize = 15
+                print(i)
+                print(signs)
+                font = ImageFont.truetype('resources/fonts/end.ttf', fontsize)
+                draw.text(((w_start + 298) / 2, ((x_start -8 - h) / 2) + i * space), f'+', (5, 5, 5), font=font)
+                draw.text(((w_start + 388) / 2, ((x_start -8 - h) / 2) + i * space), f'=', (5, 5, 5), font=font)
+                draw.text(((w_start + 214) / 2, ((x_start -8 - h) / 2) + i * space), f'=', (5, 5, 5), font=font)
 
             if sign == "Ą":
                 fontsize = sign_size
@@ -196,42 +215,70 @@ class CharacterGenerator(BaseGenerator):
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Crit')
                 draw.text(((w_start - w-7) / 2, ((x_start - h) / 2) + i * space), f'Critic', (5, 5, 5), font=font)
+                fontsize = 17
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                draw.text(((w_start - w+87) / 2, ((x_start - h) / 2) + i * space), f' ę+ą-20', (5, 5, 5), font=font)
 
             if sign == "Ę":
                 fontsize = 11
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Accuracy')
                 draw.text(((w_start - w+6) / 2, ((x_start - h) / 2) + i * space), f'Accuracy', (5, 5, 5), font=font)
+                fontsize = 20
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+
+                draw.text(((w_start - w+107) / 2, ((x_start-10 - h) / 2) + i * space), f' 1ę+2ą', (5, 5, 5), font=font)
 
             if sign == "ę":
                 fontsize = 10
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Perception')
+
                 draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Perception', (5, 5, 5), font=font)
+                fontsize = 20
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+
+                draw.text(((w_start - w+107) / 2, ((x_start-10 - h) / 2) + i * space), f' 3Ć+2ą', (5, 5, 5), font=font)
 
             if sign == "Ł":
                 fontsize = 12
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Speed')
                 draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Speed', (5, 5, 5), font=font)
+                fontsize = 20
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+                draw.text(((w_start - w+77) / 2, ((x_start-10 - h) / 2) + i * space), f'   3+ą:4', (5, 5, 5), font=font)
 
             if sign == "Ń":
                 fontsize = 10
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Charisma')
                 draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Charisma', (5, 5, 5), font=font)
+                fontsize = 20
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+
+                draw.text(((w_start - w+107) / 2, ((x_start-10 - h) / 2) + i * space), f'3Ć+2Ą', (5, 5, 5), font=font)
 
             if sign == "ł":
                 fontsize = 12
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('HP')
                 draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'HP', (5, 5, 5), font=font)
+                fontsize = 20
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+
+                draw.text(((w_start - w + 80) / 2, ((x_start - 10 - h) / 2) + i * space), f'10+3Ą', (5, 5, 5), font=font)
 
             if sign == "ń":
                 fontsize = 12
                 font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
                 w, h = font.getsize('Actions')
+
                 draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Actions', (5, 5, 5), font=font)
+                fontsize = 20
+                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
+
+                draw.text(((w_start - w + 107) / 2, ((x_start - 10 - h) / 2) + i * space), f'4+ą:10', (5, 5, 5), font=font)
 
 
         # save temp image
@@ -255,16 +302,16 @@ class CharacterGenerator(BaseGenerator):
             dic["border_ms_bar"] = [50,450,350,100,'none',35,0]
 
             #secondary stats
-            dic["border_secondary_stats"] = [445,40,350,760,'white',35,0]
-            dic["texture_secondary_bar"] = [180,31,f'{self.chars_art_folder}char_card_bar.png',137, 39,0]
-            dic["texture_secondary_stats"] = [180,73,f'{self.desc_background_image}', 137,259,0]
-            dic["border_ss_bar"] = [445,45,350,100, 'none',35,0]
+            dic["border_secondary_stats"] = [445,40,745,760,'white',35,0]
+            dic["texture_secondary_bar"] = [180,31,f'{self.chars_art_folder}char_card_bar.png',295, 39,0]
+            dic["texture_secondary_stats"] = [180,73,f'{self.desc_background_image}', 295,259,0]
+            dic["border_ss_bar"] = [445,45,745,100, 'none',35,0]
 
-            #masteries
-            dic["texture_masteries_bar"] = [336, 31, f'{self.chars_art_folder}char_card_bar.png', 137,39,0]
-            dic["border_masteries"] = [834,40,350,760,'white',35,0]
-            dic["texture_masteries"] = [336,73,f'{self.desc_background_image}', 137,259,0]
-            dic["border_m_bar"] = [834,45,350,100,'none',35,0]
+            # #masteries
+            # dic["texture_masteries_bar"] = [336, 31, f'{self.chars_art_folder}char_card_bar.png', 137,39,0]
+            # dic["border_masteries"] = [834,40,350,760,'white',35,0]
+            # dic["texture_masteries"] = [336,73,f'{self.desc_background_image}', 137,259,0]
+            # dic["border_m_bar"] = [834,45,350,100,'none',35,0]
 
             #name
             dic["texture_name"] = [35,147,f'{self.desc_background_image}', 111, 32,0]
@@ -309,17 +356,23 @@ class CharacterGenerator(BaseGenerator):
         #main stats
         for i in range(3):
             dic[f"border_secondary_main_stats_{i}"] = [129, 210 + i * 25, 20, 20, 'white', 35, 0]
+            # dic[f"border_secondary_main_stats_{i}{i}"] = [59, 210 + i * 25, 20, 20, 'white', 35, 0]
 
         #secondary stats_stats
         for j in range(3):
             for i in range(2):
-                dic[f"border_secondary_bonus_stats_{j}-{i}"] = [255, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
+                dic[f"border_secondary_bonus_stats_{j}-{i}"] = [392, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
+                dic[f"border_secondary_bonus_stats_{j}-{i}"] = [392, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
+                dic[f"border_secondary_bonus_stats_{j}-{i}-{randrange(1000)}"] = [351, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
 
             for i in range(2):
-                dic[f"border_secondary_total_stats_{j}-{i}"] = [285, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
+                dic[f"border_secondary_total_stats_{j}-{i}"] = [435, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
+                dic[f"border_secondary_bonus_stats_{j}-{i}-{randrange(1000)}"] = [351, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
 
-        dic[f"border_secondary_bonus_stats_-1"] = [255, 60+75 + 5 * 25, 20, 20, 'white', 35, 0]
-        dic[f"border_secondary_bonus_stats_-2"] = [285, 60+75 + 5 * 25, 20, 20, 'white', 35, 0]
+        dic[f"border_secondary_bonus_stats_-1"] = [392, 60+75 + 5 * 25, 20, 20, 'white', 35, 0]
+        dic[f"border_secondary_bonus_stats_-2"] = [435, 60+75 + 5 * 25, 20, 20, 'white', 35, 0]
+        dic[f"border_secondary_bonus_stats_-{randrange(1000)}"] = [351, 60+75 + 5 * 25, 20, 20, 'white',
+                                                                          35, 0]
 
         # for i in range(2):
         #     dic[f"border_secondary_bonus_stats_{i}"] = [255, 110 + i * 25, 20, 20, 'white', 35, 0]
