@@ -6,7 +6,7 @@ from matplotlib import patches
 from card_generators.baseGenerator import BaseGenerator
 
 
-class SkillGenerator(BaseGenerator):
+class StateGenerator(BaseGenerator):
 
     def generate(self, skill):
         W, H = (389, 559)
@@ -43,7 +43,7 @@ class SkillGenerator(BaseGenerator):
         texture_param = {}
         texture_param['start_W'] = 22
         texture_param['start_H'] = 78
-        #texture_param['file'] = f'{self.skills_art_folder}Hook it.jpg'
+        #texture_param['file'] = f'Hook it.jpg'
 
         texture_param['file'] = f'{self.skills_art_folder}{skill.title}.jpg'
         texture_param['resize_W'] = textures_resize_width
@@ -107,7 +107,7 @@ class SkillGenerator(BaseGenerator):
 
         #endregion
 
-        im = np.array(Image.open(f'{self.img_folder}card_backgrounds/{skill.type}.png').resize((W,H)))
+        im = np.array(Image.open(f'{self.img_folder}state_backgrounds/debuff.png').resize((W,H)))
         fig, ax = plt.subplots()
         ax.imshow(im)
 
@@ -129,8 +129,8 @@ class SkillGenerator(BaseGenerator):
         #create type, ap, and cooldown borders
         p = params[5]
         self.create_border(ax, p)
-        self.draw_action_points_cost(ax)
-        self.draw_cooldown(ax)
+        # self.draw_action_points_cost(ax)
+        # self.draw_cooldown(ax)
 
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         temp_image = Image.open(self.tmp_file)
@@ -152,15 +152,15 @@ class SkillGenerator(BaseGenerator):
         plt.close()
         self.write_description(temp_image, skill.card_text, skill.range, skill.aoe)
 
-        #add ap cost
-        self.refresh_img()
-        plt.close()
-        self.write_ap_cost(temp_image, skill.ap_cost)
-
-        #add cooldown cost
-        self.refresh_img()
-        plt.close()
-        self.write_cooldown_cost(temp_image, skill.cd_cost)
+        # #add ap cost
+        # self.refresh_img()
+        # plt.close()
+        # self.write_ap_cost(temp_image, skill.ap_cost)
+        #
+        # #add cooldown cost
+        # self.refresh_img()
+        # plt.close()
+        # self.write_cooldown_cost(temp_image, skill.cd_cost)
 
         #refresh image
         self.refresh_img()
@@ -203,14 +203,9 @@ class SkillGenerator(BaseGenerator):
         temp_image.save(self.tmp_file)
 
     def write_description(self, temp_image, description, range, aoe):
-        print(range)
-        print(description)
         description = self.parse_special_chars(description)
-        range = self.parse_special_chars(range)
-        aoe = self.parse_special_chars(aoe)
-        print(description)
         fontsize = 12
-        textwrapped = textwrap.wrap(description, width=35)
+        textwrapped = textwrap.wrap(description, width=40)
         font = ImageFont.truetype('resources/fonts/ct.ttf',fontsize)
         draw = ImageDraw.Draw(temp_image)
         w, h = font.getsize(textwrapped[0])
@@ -225,6 +220,7 @@ class SkillGenerator(BaseGenerator):
         temp_image.save(self.tmp_file)
 
     def write_type(self, temp_image, type, card_type):
+        card_type='State'
         fontsize = 22
         #TODO: switch to python 3.10 and use match
         if len(card_type) > 22:

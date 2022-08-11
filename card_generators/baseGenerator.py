@@ -8,7 +8,8 @@ class BaseGenerator():
 
     img_folder = 'resources/images/'
     desc_background_image = f'{img_folder}card_backgrounds/desc_background.png'
-    art_folder = f'{img_folder}cards/'
+    skills_art_folder = f'{img_folder}cards/'
+    chars_art_folder = f'{img_folder}characters/'
     output_folder = f'output/'
     tmp_file = '../tmp.png'
 
@@ -24,8 +25,8 @@ class BaseGenerator():
     def generate(self, *args):
         pass
 
-    def create_border(self, ax, border_start_w=0, borders_start_h=0, width=0, height=0, offset=0, facecolor='none'):
-        image_borders = patches.Rectangle((border_start_w, borders_start_h+offset), width, height, linewidth=2, edgecolor='black', facecolor=facecolor)
+    def create_border(self, ax, p):
+        image_borders = patches.Rectangle((p.get('start_W'), p.get('start_H')+p.get('alligned')), p.get('border_W'), p.get('border_H'), linewidth=2, edgecolor='black', facecolor=p.get('facecolor'))
         ax.add_patch(image_borders)
         return ax
 
