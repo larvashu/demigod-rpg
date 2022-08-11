@@ -1,6 +1,5 @@
 from docx import Document
-from docx.shared import Inches, Cm
-import PIL, os
+from docx.shared import Cm
 from PIL import Image
 
 import glob
