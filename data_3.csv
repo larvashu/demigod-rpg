@@ -1,4 +1,4 @@
-Adrenalina;shadow;0;4;Akcja;Zdejmij do 2 tokenow CD ze swojej dowolnej karty.;-;;
-Shuriken;item;1;-;Przedmiot-1 reczny;Obrazenia: 1k4/Przeladowanie: 1PA. Mozesz traktowac ten przemiot jako 2-reczny: Przeladowanie kosztuje wtedy 0 PA.;8 {hex_symbol};;
-Ociosany kamien;item;-;-;Przedmiot: Proca;Obrazenia + 2.;;;
-Jak Dawid z Goliatem;hobbit;-;-;Pasyw;Jezeli cel Twojego ataku ma conajmniej 20 [K] wiecej od Ciebie: Zadajesz dodatkowe 1k4 obrazen.;-;;
+Adrenalina;shadow;0;4;Akcja;"Zdejmij do 2 {cd_symbol} ze swojej dowolnej karty.";;;
+Shuriken;item;1;-;Przedmiot-1 reczny;"Obrazenia: 1k4\nPrzeladowanie: 1{ap_symbol}.\nMozesz traktowac ten przemiot jako 2-reczny, przeladowanie kosztuje wtedy 0 {ap_symbol}.";8 {hex_symbol};;
+Zew krwi;fire;-;-;Pasyw;"Za kazdym razem gdy zadasz obrazenia, usun 1 {cd_symbol} ze swoich umiejetnosci.";;;
+Prosta proca;item;1;-;Przedmiot - 2 reczny;Obrazenia: 1k4\nPrzeladowanie: 1 {ap_symbol}\nTrafienie - {roll_symbol}[Zr]: Automatyczne przeladowanie.;9 {hex_symbol};;

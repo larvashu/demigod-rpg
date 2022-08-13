@@ -22,5 +22,3 @@ Wiara czyni cuda;pala;-;-;Pasyw;Za kazdym razem gdy uzyjesz Daru: Poloz znacznik
 Aniol Sigmara;pala;1;4;Dar: Mag (7);Cel otrzymuje: WW(+10)/Sile(+1)/Odp(+10)/SW(+10). [Kazda wartosc pomnoz o (Mag).];1 {hex_symbol};;
 Znoszona kolczuga;item;0;2;Przedmiot - zbroja;Wymaga: 4 Sily;-;;
 Kocie ruchy;shadow;1;3;Akcja;Po ruchu: kosztuje 0 PA.                                                     Przemiesc sie za plecy celu.;6 {hex_symbol};;
-Zew krwi;fire;-;-;Pasyw;Za kazdym razem gdy zadasz obrazenia: Usun 1 dowolny token CD ze swoich umiejetnosci.;-;;
-Prosta proca;item;1;-;Przedmiot - 2 reczny;Obrazenia: 1k4                           Przeladowanie: 1PA                    Trafienie: {Zr}: Automatyczne przeladowanie.;9 {hex_symbol};;

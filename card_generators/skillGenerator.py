@@ -198,29 +198,93 @@ class SkillGenerator(BaseGenerator):
     def write_ap_cost(self, temp_image, ap_cost):
         font = ImageFont.truetype('resources/fonts/twb.ttf',57)
         draw = ImageDraw.Draw(temp_image)
-        draw.text((7,-2), ap_cost, (255, 255, 255), font=font,stroke_width=1, stroke_fill='black')
+        if ap_cost == "1":
+            draw.text((12, -2), ap_cost, (255, 255, 255), font=font, stroke_width=1, stroke_fill='black')
+        else:
+            draw.text((7,-2), ap_cost, (255, 255, 255), font=font,stroke_width=1, stroke_fill='black')
         #save temp image
         temp_image.save(self.tmp_file)
 
-    def write_description(self, temp_image, description, range, aoe):
-        print(range)
-        print(description)
+    def write_description(self, temp_image, description, _range, aoe):
+        nominal_width = 35
+        description = description + r'\n'
         description = self.parse_special_chars(description)
-        range = self.parse_special_chars(range)
+        description, spec_char_pos = self.parse_newlines(description, nominal_width)
+        rang = self.parse_special_chars(_range)
         aoe = self.parse_special_chars(aoe)
-        print(description)
+
         fontsize = 12
-        textwrapped = textwrap.wrap(description, width=35)
+        textwrapped = textwrap.wrap(description, width=35, replace_whitespace=False, drop_whitespace=False)
+        if len(textwrapped) > 4:
+            fontsize = 10
         font = ImageFont.truetype('resources/fonts/ct.ttf',fontsize)
         draw = ImageDraw.Draw(temp_image)
         w, h = font.getsize(textwrapped[0])
 
+        print(w,h)
         if aoe:
-            draw.text(((31),(265-h)), f'Zasieg: {range}, AoE: {aoe}', (0, 0, 0), font=font)
+            draw.text(((31),(265-h)), f'Zasieg: {rang}, AoE: {aoe}', (0, 0, 0), font=font)
+        elif rang:
+            draw.text(((31),(265-h)), f'Zasieg: {rang}', (0, 0, 0), font=font)
+            draw.text(((31), (285 - h)), '\n'.join(textwrapped), (0, 0, 0), font=font)
         else:
-            draw.text(((31),(265-h)), f'Zasieg: {range}', (0, 0, 0), font=font)
+            draw.text(((31),(265-h)), '\n'.join(textwrapped), (0, 0, 0), font=font)
 
-        draw.text(((31),(285-h)), '\n'.join(textwrapped), (0, 0, 0), font=font)
+        print('zaczynam zabawy')
+        print(textwrapped)
+        print(spec_char_pos)
+
+        i = 0
+        for line in textwrapped:
+            print(f'line: {line}')
+            for special_char_p in spec_char_pos:
+                if special_char_p['line_nr'] == i:
+                    for indic in special_char_p['indices']:
+                        if special_char_p['special_char'] == self.cd_symbol:
+                            try:
+                                prefix = line[0:indic]
+                                print(f'prefix: {prefix}')
+                                w,h = font.getsize(prefix)
+                                h = 15
+                                print(f'w, h: {w, h}')
+                                string = special_char_p['special_char']
+                                print(string)
+                                if not rang:
+                                    hs = 265
+                                    draw.text(((31 + w), (hs - h + (h * i * 1.08))), string, (147, 0, 150), font=font, stroke_width=1, stroke_fill='black')
+                                else:
+                                    hs = 285
+                                    draw.text(((31 + w), (hs - h + (h * i * 1.05))), string, (147, 0, 150), font=font, stroke_width=1, stroke_fill='black')
+                            except:
+                                print('no trudno')
+
+                        if special_char_p['special_char'] == self.ap_symbol:
+                                try:
+                                    prefix = line[0:indic]
+                                    print(f'prefix: {prefix}')
+                                    w, h = font.getsize(prefix)
+                                    h = 15
+                                    print(f'w, h: {w, h}')
+                                    string = special_char_p['special_char']
+                                    print(string)
+                                    if not rang:
+                                        hs = 265
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.08))), string, (55, 118, 171),
+                                                  font=font,
+                                                  stroke_width=1, stroke_fill='black')
+
+                                    else:
+                                        hs = 285
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (55, 118, 171), font=font,
+                                              stroke_width=1, stroke_fill='black')
+
+                                except:
+                                    print('no trudno')
+            i+=1
+            print(f"i: {i}")
+
+
+            # draw.text()
         #save temp image
         temp_image.save(self.tmp_file)
 
