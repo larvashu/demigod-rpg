@@ -269,7 +269,7 @@ class SkillGenerator(BaseGenerator):
                                     print(string)
                                     if not rang:
                                         hs = 265
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.08))), string, (55, 118, 171),
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (55, 118, 171),
                                                   font=font,
                                                   stroke_width=1, stroke_fill='black')
 

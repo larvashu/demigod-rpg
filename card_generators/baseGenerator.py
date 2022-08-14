@@ -24,6 +24,7 @@ class BaseGenerator():
     hex_symbol = "ę"
     cd_symbol = "ą"
     roll_symbol = "ż"
+    damage_symbol = "#"
     ImageFile.LOAD_TRUNCATED_IMAGES = True
 
     special_chars_pos = []
@@ -59,6 +60,8 @@ class BaseGenerator():
             text = text.replace('{cd_symbol}', self.cd_symbol)
         if '{roll_symbol}' in text:
             text = text.replace('{roll_symbol}', self.roll_symbol)
+        if '{damage_symbol}' in text:
+            text = text.replace('{damage_symbol}', self.damage_symbol)
 
         return text
 
