@@ -20,6 +20,7 @@ class BaseGenerator():
     borders_start_h = None
     textures_resize_width = None
 
+    hp_symbol = "^"
     ap_symbol = "ó"
     hex_symbol = "ę"
     cd_symbol = "ą"
@@ -52,6 +53,8 @@ class BaseGenerator():
 
     def parse_special_chars(self, text):
         ##TODO: this is ugly
+        if '{hp_symbol}' in text:
+            text = text.replace('{hp_symbol}', self.hp_symbol)
         if '{ap_symbol}' in text:
             text = text.replace('{ap_symbol}', self.ap_symbol)
         if '{hex_symbol}' in text:
@@ -75,8 +78,6 @@ class BaseGenerator():
             for wrap in _textwrapped:
                 if newline_sign in wrap:
                     value = wrap
-                    print('indexior')
-                    print(value.index(newline_sign))
                     res = value[:value.index(newline_sign)+len(newline_sign)]
                     fill = nominal_width - len(res)
                     for i in range(fill):
@@ -88,7 +89,7 @@ class BaseGenerator():
                     results.append(wrap)
             text = text[text.index(newline_sign)+len(newline_sign):]
         _copy = 0
-        specials = [self.cd_symbol, self.ap_symbol, self.hex_symbol]
+        specials = [self.cd_symbol, self.ap_symbol, self.hex_symbol, self.hp_symbol]
 
         line_nr = 0
         for line in results:

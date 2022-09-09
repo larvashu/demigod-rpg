@@ -130,7 +130,10 @@ class SkillGenerator(BaseGenerator):
         p = params[5]
         self.create_border(ax, p)
         self.draw_action_points_cost(ax)
-        self.draw_cooldown(ax)
+        if skill.card_type == "Towarzysz":
+            self.draw_compation_hp(ax)
+        else:
+            self.draw_cooldown(ax)
 
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         temp_image = Image.open(self.tmp_file)
@@ -182,6 +185,13 @@ class SkillGenerator(BaseGenerator):
         ax.add_patch(image_borders)
         return ax
 
+    def draw_compation_hp(self, ax):
+        print('niezywlik')
+        image_borders = patches.Circle((258, 367), 65, linewidth=2, edgecolor='black', facecolor='red')
+        ax.add_patch(image_borders)
+        return ax
+
+
     def write_cooldown_cost(self, temp_image, cd_cost):
         font = ImageFont.truetype('resources/fonts/twb.ttf',57)
         draw = ImageDraw.Draw(temp_image)
@@ -230,13 +240,8 @@ class SkillGenerator(BaseGenerator):
         else:
             draw.text(((31),(265-h)), '\n'.join(textwrapped), (0, 0, 0), font=font)
 
-        print('zaczynam zabawy')
-        print(textwrapped)
-        print(spec_char_pos)
-
         i = 0
         for line in textwrapped:
-            print(f'line: {line}')
             for special_char_p in spec_char_pos:
                 if special_char_p['line_nr'] == i:
                     for indic in special_char_p['indices']:
@@ -280,8 +285,32 @@ class SkillGenerator(BaseGenerator):
 
                                 except:
                                     print('no trudno')
+
+                        if special_char_p['special_char'] == self.hp_symbol:
+                                print('hehe')
+                                try:
+                                    prefix = line[0:indic]
+                                    print(f'prefix: {prefix}')
+                                    w, h = font.getsize(prefix)
+                                    h = 15
+                                    print(f'w, h: {w, h}')
+                                    string = special_char_p['special_char']
+                                    print(string)
+                                    if not rang:
+                                        hs = 265
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (255,69,0),
+                                                  font=font,
+                                                  stroke_width=1, stroke_fill='black')
+
+                                    else:
+                                        hs = 285
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (255,69,0), font=font,
+                                              stroke_width=1, stroke_fill='black')
+
+                                except:
+                                    print('no trudno')
+
             i+=1
-            print(f"i: {i}")
 
 
             # draw.text()
