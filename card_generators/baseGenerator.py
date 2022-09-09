@@ -26,6 +26,7 @@ class BaseGenerator():
     cd_symbol = "ą"
     roll_symbol = "ż"
     damage_symbol = "#"
+    armor_symbol = "&"
     ImageFile.LOAD_TRUNCATED_IMAGES = True
 
     special_chars_pos = []
@@ -53,6 +54,8 @@ class BaseGenerator():
 
     def parse_special_chars(self, text):
         ##TODO: this is ugly
+        if '{armor_symbol}' in text:
+            text = text.replace('{armor_symbol}', self.armor_symbol)
         if '{hp_symbol}' in text:
             text = text.replace('{hp_symbol}', self.hp_symbol)
         if '{ap_symbol}' in text:

@@ -129,7 +129,11 @@ class SkillGenerator(BaseGenerator):
         #create type, ap, and cooldown borders
         p = params[5]
         self.create_border(ax, p)
+
+        ##draw top parameter
         self.draw_action_points_cost(ax)
+
+        #draw bottom parameter
         if skill.card_type == "Towarzysz":
             self.draw_compation_hp(ax)
         else:
@@ -184,6 +188,10 @@ class SkillGenerator(BaseGenerator):
         image_borders = patches.Circle((258, 367), 65, linewidth=2, edgecolor='black', facecolor='purple')
         ax.add_patch(image_borders)
         return ax
+    def draw_armor(self, ax):
+        image_borders = patches.Circle((258, 367), 65, linewidth=2, edgecolor='black', facecolor='gray')
+        ax.add_patch(image_borders)
+        return ax
 
     def draw_compation_hp(self, ax):
         print('niezywlik')
@@ -201,6 +209,11 @@ class SkillGenerator(BaseGenerator):
 
     def draw_action_points_cost(self, ax):
         image_borders = patches.Circle((-9, 7), 65, linewidth=2, edgecolor='black', facecolor='#3776ab')
+        ax.add_patch(image_borders)
+        return ax
+
+    def draw_attack(self, ax):
+        image_borders = patches.Circle((-9, 7), 65, linewidth=2, edgecolor='black', facecolor='gray')
         ax.add_patch(image_borders)
         return ax
 
