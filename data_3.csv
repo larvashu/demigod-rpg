@@ -1,11 +1,11 @@
 Skorzany kaftan;item;0;0;Zbroja;Wymaga 3 Sily.\nZapewnia 1 &.;;
 Kumulacja;hobbit;0;0;Pasyw;"Poloz {cd_symbol} po udanym rzucie, zdejmij po nieudanym (max 5).\nPrzy 3+ znacznikach: Wszystkie Twoje rzuty maja +5 za kazdy {cd_symbol}.";;;
 Kosciana zbroja;necro;1;-;Akcja;"Poloz na tej karcie 1+2*Mag{ap_symbol}. \nZyskujesz 1 pancerza za kazdy {ap_symbol}. \nZdejmij {ap_symbol} za kazdym razem, gdy otrzymasz obrazenia.";;;
-Wyciagnij i przyciagnij;necro;1;3;Akcja;"Twoj nastepny atak zyskuje 2 {hex_symbol} zasiegu.\nJezeli trafisz,  {roll_symbol} K/K:\n mozesz przyciagnac cel o max 2 {hex_symbol}.";;;
-Niezywilk;necro;3;12;Towarzysz;WW: 40\n{damage_symbol}: 1k6\nSzybkosc: 8\n2{ap_symbol} : Sprowokuj cel ({roll_symbol}SW. 3{hex_symbol}. \n1{ap_symbol} : Zaatakuj cel.;;;
-Zombie Zoo;necro;0;0;Pasyw;"Mozesz kontrolowac do 1*Mag nieumarlych Towarzyszy. \n1{ap_symbol} : Wskrzes Towarzysza (8 {hex_symbol}). \nGdy Towarzysz ginie, zadaje Mag*1k6 obrazen do okola. \n";;;
+Wyciagnij i przyciagnij;necro;1;3;Akcja: Halabarda;"Twoj nastepny atak zyskuje 2 {hex_symbol} zasiegu.\nJezeli trafisz,  {roll_symbol} K/K:\n mozesz przyciagnac cel o max 2 {hex_symbol}.";;;
+Niezywilk;necro;3;12;Towarzysz;WW: 40, Sila: 4\n{damage_symbol}: 1k6\nSzybkosc: 8\nReszta statystyk: 30\n2{ap_symbol} : Sprowokuj cel ({roll_symbol}SW. 3{hex_symbol}. \n1{ap_symbol} : Zaatakuj cel.;;;
+Zombie Zoo;necro;0;0;Pasyw;"Mozesz contraflow do 1*Mag nieumarlych Towarzyszy. \n1{ap_symbol} : Wskrzes Towarzysza (8 {hex_symbol}). \nGdy Towarzysz ginie, zadaje Mag*1k6 obrazen do okola. \n";;;
 Smiertelnie ranny ptaszek;necro;2;6;Towarzysz;Szybkosc: 12\n1{ap_symbol} : oznacz cel (1 {hex_symbol}).\n Twoje ataki przeciwko celowi maja +20 do WW i US w tej turze.\nJezeli cel jest juz oznaczony, zamiast tego zadaj 1k4 obrazen.;;;
-Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 2 {ap_symbol} mniej..;;;
+Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 2 {ap_symbol} mniej.;;;
 Serwis Zwlok;necro;2;3;Akcja;Przywroc 5 + Mag*k6 {hp_symbol}.;8 {hex_symbol}, tylko na Towarzysza.;;;
 Kosciana Halabarda;item;3;0;Przedmiot 2 reczny;{damage_symbol}: S+1k6\nCo drugi atak kosztuje 1 {ap_symbol}.;2 {hex_symbol};;
 Transfer bolu;necro;0;0;Akcja przelaczana;Jezeli kontrolujesz towarzysza, dzielisz z nim na pol otrzymane obrazenia (zaokraglone w dol).\n@: Wylaczasz ten efekt.;;;;
