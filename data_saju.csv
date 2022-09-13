@@ -1,3 +1,19 @@
-Smola;item;1;-;Przedmiot jednorazowy;"Poloz znacznik na planszy.\nDo konca walki, w odleglosci 2 {hex_symbol} szybkosc naziemnych jednostek jest zmniejszony o 3.\nMozna podpalic..";;;
-Altyleria z Gunad-Dur;item;3;1;Przedmiot duzy;Twoja szybkosc spada do 1.\n{damage_symbol}: 2k8;20 {hex_symbol};
+Zywa Mgla;mist;0;0;Akcja przelaczana;"Gdy roztaczasz mgle: wszystkie ataki procz Twoich maja -15. \n@: podwajasz efekt mgly, jednak mozesz wykonywac jedynie akcje ruchu.";;;
+Serwis Zwlok;necro;2;3;Akcja;Przywroc Mag*k10 {hp_symbol}.;8 {hex_symbol}, tylko na Towarzysza.;;;
+Sloj Zhen'In;mist;0;0;Przedmiot uzywalny;Roztaczasz mgle na 1 {hex_symbol} wiecej. \n@: Rzuc sloj. Roztacza mgle na 2 {hex_symbol}.;;;
+Dar pokuty;pala;1;2;Dar: Mag(x);{roll_symbol}Mag:\n1: Otrzymujesz 1k6 obrazen.\n 2-6:Nie dzieje sie nic.\n7-9: Zadjesz Mag*1k6 obrazen.\n10+: Zadajesz Mag*1k10 obrazen.;3*Mag {hex_symbol};;
+Patoszarza;fire;1;5;Akcja;"Przemiesc sie o max 9 {hex_symbol}.\n{roll_symbol}K za kazdy cel po drodze: Przegrany upada. \nNa czas szarzy otrzymujesz +20K";9 {hex_symbol};;
+Mlot bojowy;item;2;0;Przedmiot 1 reczny;{damage_symbol}: S+1k6.\nTrafienie: 10% na ogluszenie na 1 ture.;1 {hex_symbol};;
+Zamach;fire;2;4;Akcja;{roll_symbol}WW + 10: Zatakuj wszystkich w okol siebie.;Otaczajace {hex_symbol};;
+Wiara czyni cuda;pala;0;0;Pasyw;"Za kazdym razem gdy uzyjesz Daru, poloz {charge_symbol} na tej karcie.\nRaz na ture mozesz zuzyc 2 {charge_symbol} by dostac 1 {ap_symbol}.";;;;
+Ma gadane;hobbit;:3;5;(Re)akcja;"{roll_symbol}Ogl/Sw:\nZagadujesz cel. Traci on 3 {ap_symbol} (teraz lub w swojej turze). \nZwiekszasz szanse o 15 za kazdy wydany {ap_symbol} powyzej 1.)";6 {hex_symbol};;
+Kosciana zbroja;necro;1;1;Re(Akcja);"Poloz na tej karcie 1+Mag {charge_symbol} (max 4) \nZyskujesz 1 pancerza za kazdy {charge_symbol}. \nZdejmij {charge_symbol} za kazdym razem, gdy otrzymasz obrazenia.";;;
+Modlitwa;pala;:4;0;Akcja;Poloz na tej karcie 1 {charge_symbol} za kazdy wydany {ap_symbol}.\nDo konca walki dostajesz +2 do testow Magii za kazdy {charge_symbol}. \nPrzy 3 {charge_symbol} : Zyskujesz 1 dodatkowy {ap_symbol} co ture.;;;
+Seria;mist;0;0;Pasyw;Kazdy trafiony atak w tej samej serii powyzej:\n2: leczy cie za {Mag}.\n3: Ignoruje 1 pancerza.\n6:Pozwala wykonac 1 dodatkowy darmowy atak.;;;
+Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;
+Megamagnez;item;3;4;Przedmiot Ogromny;"{roll_symbol} Int/K: Cel traci dowolny przedmiot, ktory przyciagasz o 1k6 pol w swoja strone. \nZmniejszasz szanse o 2 za kazdy {hex_symbol} pomiedzy wami.";10 {hex_symbol}.;;
+Czasospowalniacz;item;0;0;Przedmiot uzywalny;"Masz dodatkowa minute na wykonanie ruchu.\nJezeli na tej karcie nie ma {charge_symbol}, mozesz takowy polozyc, aby zdjac {cd_symbol} z dowolnej karty.";;; "
+Gadzeciarz;tinker;0;0;Pasyw;"Uzywanie przedmiotow nie bedacych bronia, kosztuje Cie 1 {ap_symbol} mniej.";;;
+Smola;item;2;-;Przedmiot jednorazowy;"Poloz znacznik na planszy.\nDo konca walki, w odleglosci 2 {hex_symbol} szybkosc naziemnych jednostek jest zmniejszona o 3.\nMozna podpalic.";;;
+Altyleria z Gunad-Dur;item;3;1;Przedmiot duzy;Twoja szybkosc spada do 1.\n{damage_symbol}: 2k8 i 1k8 na otaczajacych {hex_symbol}.\nPrzeladowanie: 2 {ap_symbol}.;20 {hex_symbol};
 Granat Dymny;item;1;1;Przedmiot uzywalny;"Poloz znacznik na planszy.\nDo Twojej nastepnej tury, roztacza on zaslaniajacy widok mgle (3 {hex_symbol}).";Sila + 6 {hex_symbol};;

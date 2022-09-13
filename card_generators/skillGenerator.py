@@ -194,7 +194,6 @@ class SkillGenerator(BaseGenerator):
         return ax
 
     def draw_compation_hp(self, ax):
-        print('niezywlik')
         image_borders = patches.Circle((258, 367), 65, linewidth=2, edgecolor='black', facecolor='red')
         ax.add_patch(image_borders)
         return ax
@@ -287,13 +286,36 @@ class SkillGenerator(BaseGenerator):
                                     print(string)
                                     if not rang:
                                         hs = 265
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (55, 118, 171),
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (0,145,255),
                                                   font=font,
                                                   stroke_width=1, stroke_fill='black')
 
                                     else:
                                         hs = 285
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (55, 118, 171), font=font,
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (0,191,255), font=font,
+                                              stroke_width=1, stroke_fill='black')
+
+                                except:
+                                    print('no trudno')
+
+                        if special_char_p['special_char'] == self.charge_symbol:
+                                try:
+                                    prefix = line[0:indic]
+                                    print(f'prefix: {prefix}')
+                                    w, h = font.getsize(prefix)
+                                    h = 15
+                                    print(f'w, h: {w, h}')
+                                    string = special_char_p['special_char']
+                                    print(string)
+                                    if not rang:
+                                        hs = 265
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (50,205,50),
+                                                  font=font,
+                                                  stroke_width=1, stroke_fill='black')
+
+                                    else:
+                                        hs = 285
+                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (50,205,50), font=font,
                                               stroke_width=1, stroke_fill='black')
 
                                 except:

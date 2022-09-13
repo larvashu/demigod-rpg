@@ -1,9 +1,19 @@
 Ruch: Max (Szybkosc) hexow za 1 PA.
 Atak: W zaleznosci od broni. Bez broni: 1 PA.
-Obrot: 1 PA.
-Dobranie broni/schowanie: 1 PA
-Rzucenie broni: 0 PA
+Dobranie/zmiana broni: 1 PA
+Szybkie dobieranie: 0 PA (1 na ture)
 Uzycie przedmiotu: W zaleznosci od przedmiotu.
-Proba odnowienia przedmiotu (50%): 1 PA.
-Proba odnowienia przedmiotu (90%): 2 PA.
+Podniesienie sie: 1 PA (rzut na ZR). jesli sie nie uda, dodatkowy 1 PA (automatyczny sukces)
 Ocucenie (50%): 3PA.
+Rzut: 1 PA (3 + Sila).
+
+Noszenie przedmiotow:
+Maly - 2S
+Duzy - 4S
+Ogromny - 6S
+
+POLA:
+Podpalone: 1k8 Obrazen na poczatku tury.
+Obodzone: 60% szans na upadek podczas ruchu.
+Smoła: Ruch zmniejszony o 3.
+Mokre: Można oblodzić, 10% na upadek.

@@ -22,6 +22,7 @@ class BaseGenerator():
 
     hp_symbol = "^"
     ap_symbol = "ó"
+    charge_symbol = "~"
     hex_symbol = "ę"
     cd_symbol = "ą"
     roll_symbol = "ż"
@@ -54,6 +55,8 @@ class BaseGenerator():
 
     def parse_special_chars(self, text):
         ##TODO: this is ugly
+        if '{charge_symbol}' in text:
+            text = text.replace('{charge_symbol}', self.charge_symbol)
         if '{armor_symbol}' in text:
             text = text.replace('{armor_symbol}', self.armor_symbol)
         if '{hp_symbol}' in text:
@@ -92,7 +95,7 @@ class BaseGenerator():
                     results.append(wrap)
             text = text[text.index(newline_sign)+len(newline_sign):]
         _copy = 0
-        specials = [self.cd_symbol, self.ap_symbol, self.hex_symbol, self.hp_symbol]
+        specials = [self.cd_symbol, self.ap_symbol, self.hex_symbol, self.hp_symbol, self.charge_symbol]
 
         line_nr = 0
         for line in results:
