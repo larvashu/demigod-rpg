@@ -1,3 +1,4 @@
+Bystry Konus;hobbit;0;0;Pasyw;"Ataki przeciwko Tobie maja -15.\n\n Zyskujesz +15 do inicjatywy.\n \nJezeli na tej karcie nie ma {charge_symbol}, mozesz owy polozyc, by zyskac 2 {ap_symbol}";;;;
 Skorzany kaftan;item;0;0;Zbroja;Wymaga 3 Sily.\nZapewnia 1 &.;;
 Kumulacja;hobbit;0;0;Pasyw;"Poloz {cd_symbol} po udanym rzucie, zdejmij po nieudanym (max 5).\nPrzy 3+ znacznikach: Wszystkie Twoje rzuty maja +5 za kazdy {cd_symbol}.";;;
 Wyciagnij i przyciagnij;necro;1;3;Akcja: Halabarda;"Twoj nastepny atak zyskuje 2 {hex_symbol} zasiegu.\nJezeli trafisz,  {roll_symbol} K/K:\n mozesz przyciagnac cel o max 2 {hex_symbol}.";;;
@@ -11,7 +12,6 @@ Tunel we mgle;mist;0;2;Akcja;Mozesz przemiescic sie na dowolne zamglone pole, ni
 Sloj Zhen'In;mist;0;0;Przedmiot uzywalny;Roztaczasz mgle na 1 {hex_symbol} wiecej. \n@: Upusc sloj. Roztacza roztacza on mgle na 2 {hex_symbol}.;;;
 Roztoczenie - Sublimacja;mist;1;0;Stan;"Roztaczasz mgle na 1+Mag {hex_symbol} \n \nLUB \n \n@:Otrzymujesz 2 Sily oraz pancerza za kazdy punkt Magii.";;;
 Tornado;mist;2;4;Akcja: Mag(6);"{roll_symbol}SW/K: Cel upada.";Otaczajace {hex_symbol} we mgle.;;;
-Bystry Konus;hobbit;0;0;Pasyw;"Ataki przeciwko Tobie maja -15. Zyskujesz +15 do inicjatywy. \nJezeli na tej karcie nie ma {charge_symbol}, mozesz takowy polozyc, by zyskac 2 {ap_symbol}";;;;
 Poderzniecie gardla;shadow;2;4;Akcja: Sztylet;{roll_symbol}WW: Zadaj 3x {damage_symbol} broni.\nIgnoruje 3 pancerza.\nMozliwe obrazenia krytyczne.;1 {hex_symbol}.;;
 Twoj osobisty Goliat;hobbit;0;5;Status;"Daj celowi te karte.\nTwoje przeciwko oznaczonemu celowi zadaja dodatkowo 1k4 obrazen.\n1{ap_symbol} : Wroc te karte do swojej reki.";15 {hex_symbol};;
 Kocie ruchy;shadow;1;3;Akcja;Po ruchu: kosztuje 0 {ap_symbol}.\nPrzemiesc sie za plecy celu.;6 {hex_symbol};;
@@ -29,3 +29,4 @@ Wiatr we wlosach;fire;0;5;Akcja;Twoj nastepny atak kosztuje 2 {ap_symbol} mniej.
 Unik;shadow;0;2;Reakcja;{roll_symbol}Zr: Unikasz ciosu.\nMozesz wydac 1 {ap_symbol} by dodac 10 do rzutu.;;;
 Od tylca;shadow;0;0;Pasyw;Gdy znajdujesz sie za celem:\n+10 WW i +20 krytyka.;;;
 Prosty sztylet;item;1;0;Przedmiot 1 reczny;{damage_symbol}: S-3 + 1k4.\nKrytyk: +5.\nKrytyk: Obrazenia * 2.;1 {hex_symbol};;
+Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;

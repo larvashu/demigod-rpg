@@ -231,19 +231,26 @@ class SkillGenerator(BaseGenerator):
         nominal_width = 35
         description = description + r'\n'
         description = self.parse_special_chars(description)
+
         description, spec_char_pos = self.parse_newlines(description, nominal_width)
+
+        print(description)
+        print(spec_char_pos)
         rang = self.parse_special_chars(_range)
         aoe = self.parse_special_chars(aoe)
 
         fontsize = 12
+        multiplier = 1.07
+        _rangeMultiplier = 1.10
         textwrapped = textwrap.wrap(description, width=35, replace_whitespace=False, drop_whitespace=False)
         if len(textwrapped) > 4:
+            multiplier = 1.08
+            _rangeMultiplier = 1.11
             fontsize = 10
-        font = ImageFont.truetype('resources/fonts/ct.ttf',fontsize)
+        font = ImageFont.truetype('resources/fonts/ct.ttf', fontsize)
         draw = ImageDraw.Draw(temp_image)
         w, h = font.getsize(textwrapped[0])
 
-        print(w,h)
         if aoe:
             draw.text(((31),(265-h)), f'Zasieg: {rang}, AoE: {aoe}', (0, 0, 0), font=font)
         elif rang:
@@ -254,6 +261,7 @@ class SkillGenerator(BaseGenerator):
 
         i = 0
         for line in textwrapped:
+            print(f"line: {line}")
             for special_char_p in spec_char_pos:
                 if special_char_p['line_nr'] == i:
                     for indic in special_char_p['indices']:
@@ -261,38 +269,35 @@ class SkillGenerator(BaseGenerator):
                             try:
                                 prefix = line[0:indic]
                                 print(f'prefix: {prefix}')
-                                w,h = font.getsize(prefix)
-                                h = 15
+                                w,_h = font.getsize(prefix)
+                                # h = 15
                                 print(f'w, h: {w, h}')
                                 string = special_char_p['special_char']
                                 print(string)
                                 if not rang:
                                     hs = 265
-                                    draw.text(((31 + w), (hs - h + (h * i * 1.08))), string, (147, 0, 150), font=font, stroke_width=1, stroke_fill='black')
+                                    draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (147, 0, 150), font=font, stroke_width=1, stroke_fill='black')
                                 else:
                                     hs = 285
-                                    draw.text(((31 + w), (hs - h + (h * i * 1.05))), string, (147, 0, 150), font=font, stroke_width=1, stroke_fill='black')
+                                    draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (147, 0, 150), font=font, stroke_width=1, stroke_fill='black')
                             except:
                                 print('no trudno')
 
                         if special_char_p['special_char'] == self.ap_symbol:
                                 try:
                                     prefix = line[0:indic]
-                                    print(f'prefix: {prefix}')
-                                    w, h = font.getsize(prefix)
-                                    h = 15
-                                    print(f'w, h: {w, h}')
+                                    w, _h = font.getsize(prefix)
                                     string = special_char_p['special_char']
                                     print(string)
                                     if not rang:
                                         hs = 265
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (0,145,255),
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (0,145,255),
                                                   font=font,
                                                   stroke_width=1, stroke_fill='black')
 
                                     else:
                                         hs = 285
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (0,191,255), font=font,
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (0,191,255), font=font,
                                               stroke_width=1, stroke_fill='black')
 
                                 except:
@@ -301,21 +306,20 @@ class SkillGenerator(BaseGenerator):
                         if special_char_p['special_char'] == self.charge_symbol:
                                 try:
                                     prefix = line[0:indic]
-                                    print(f'prefix: {prefix}')
-                                    w, h = font.getsize(prefix)
-                                    h = 15
+                                    print(f'prefix 2: {prefix}')
+                                    w, _h = font.getsize(prefix)
+                                    # h = 15
                                     print(f'w, h: {w, h}')
                                     string = special_char_p['special_char']
                                     print(string)
                                     if not rang:
                                         hs = 265
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (50,205,50),
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (50,205,50),
                                                   font=font,
                                                   stroke_width=1, stroke_fill='black')
-
                                     else:
                                         hs = 285
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (50,205,50), font=font,
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (50,205,50), font=font,
                                               stroke_width=1, stroke_fill='black')
 
                                 except:
@@ -327,25 +331,24 @@ class SkillGenerator(BaseGenerator):
                                     prefix = line[0:indic]
                                     print(f'prefix: {prefix}')
                                     w, h = font.getsize(prefix)
-                                    h = 15
+                                    h = 16
                                     print(f'w, h: {w, h}')
                                     string = special_char_p['special_char']
                                     print(string)
                                     if not rang:
                                         hs = 265
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (255,69,0),
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (255,69,0),
                                                   font=font,
                                                   stroke_width=1, stroke_fill='black')
 
                                     else:
                                         hs = 285
-                                        draw.text(((31 + w), (hs - h + (h * i * 1.01))), string, (255,69,0), font=font,
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (255,69,0), font=font,
                                               stroke_width=1, stroke_fill='black')
 
                                 except:
                                     print('no trudno')
-
-            i+=1
+            i += 1
 
 
             # draw.text()

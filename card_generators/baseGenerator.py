@@ -79,20 +79,37 @@ class BaseGenerator():
         special_char_pos = []
         _copy = text
         newline_sign = r'\n'
+        line = 0
+
         while text:
             _textwrapped = textwrap.wrap(text, width=35, replace_whitespace=False, drop_whitespace=False)
+            previousEndsWithSpace = False
             for wrap in _textwrapped:
+                print(len(wrap))
+                print(f"wrap: {wrap}")
+                line+=1
+                if line !=1:
+                    if results[line-2][-1:] == " ":
+                        previousEndsWithSpace = True
+                    else:
+                        previousEndsWithSpace = False
+
+                if previousEndsWithSpace:
+                    if wrap[0] == " ":
+                        wrap = wrap[1:]
+
                 if newline_sign in wrap:
                     value = wrap
                     res = value[:value.index(newline_sign)+len(newline_sign)]
                     fill = nominal_width - len(res)
                     for i in range(fill):
                         res += ' '
-                    res = res.replace(r'\n', ' ')
+                    res = res.replace(r'\n', '  ')
                     results.append(res)
                     break
                 else:
                     results.append(wrap)
+                print(results)
             text = text[text.index(newline_sign)+len(newline_sign):]
         _copy = 0
         specials = [self.cd_symbol, self.ap_symbol, self.hex_symbol, self.hp_symbol, self.charge_symbol]
