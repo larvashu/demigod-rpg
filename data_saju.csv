@@ -1,3 +1,16 @@
+Jastrzab z Jingthorn;necro;3;6;Towarzysz;Szybkosc: 12. SW WW/US +20.\n1{ap_symbol} : oznacz cel na 1 ture (1 {hex_symbol}). Jezeli cel jest juz oznaczony, zamiast tego zadaj 1k2 obrazen.\n Twoje ataki przeciwko oznaczonemu celowi maja +10 do WW i US.;;;
+Odskok;necro;1;1;Akcja szybka;"{roll_symbol} Zr: Unikasz ciosu i przemieszczasz sie o max 2 {hex_symbol}";;;
+Detekcja slabych punktow;necro;0;0;Pasyw;"Na poczatku kazdej rundy i po kazdym udanym ataku, poloz {charge_symbol} na tej karcie (max 5).\n\nTwoje ataki ignoruja 1{armor_symbol} za kazdy{charge_symbol}";;;
+Strzal za trzy punkty;necro;0;0;Pasyw;"Zyskujesz 5 {hex_symbol} zasiegu uzywajac broni zasiegowej.\n\nDostajesz +1 do {damage_symbol} za kazdy {hex_symbol} powyzej 12 ktory dzieli Cie od celu.";;;
+Kusza reczna;item;1;0;Bron: Kusza;"{damage_symbol}: 1k6.\nZaczynasz walke z 3 {charge_symbol}.\nPo ataku, zdejmij {charge_symbol}.\n Przeladowanie: 2 {ap_symbol}.";12 {hex_symbol};;
+Belt przewodnik;necro;1;1;Akcja: Kusza;"Twoj nastepny atak ma +10 do US.\nJezeli trafisz, poloz dodatkowy {charge_symbol} na 'Detekcje slabych punktow'";;;
+Nie usiedzi w miejscu;necro;0;0;Pasyw;"Dostajesz +1 szybkosci.\nJezeli nie wykonasz akcji ruchu w turze, poloz {charge_symbol} na tej karcie. Jezeli na tej karcie jest {charge_symbol}, dostajesz -30 do wszystkich rzutow. 1 {ap_symbol} : Zdejmij {charge_symbol} z tej karty.";;;
+Zamach;fire;2;4;Akcja;{roll_symbol}WW + 10: Zatakuj wszystkie postacie w okol siebie.;Otaczajace {hex_symbol};;
+Zombie Zoo;necro;0;0;Pasyw;"Mozesz kontrolowac do 1*Mag nieumarlych Towarzyszy.\n2{ap_symbol} : Wskrzes Towarzysza (8 {hex_symbol}).\nGdy Towarzysz ginie, zadaje Mag*1k6 obrazen do okola. \n";;;
+
+
+
+
 Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;
 Czasospowalniacz;item;0;0;Przedmiot uzywalny;"Masz dodatkowa minute na wykonanie ruchu.\nJezeli na tej karcie nie ma {charge_symbol}, mozesz takowy polozyc, aby zdjac {cd_symbol} z dowolnej karty.";;;
 Wiara czyni cuda;pala;0;1;Akcja;"Za kazdym razem gdy uzyjesz Daru, poloz {charge_symbol} na tej karcie. \n2{charge_symbol}: Zyskujesz 1 {ap_symbol}.";;;;
@@ -7,7 +20,6 @@ Sloj Zhen'In;mist;0;0;Przedmiot uzywalny;Roztaczasz mgle na 1 {hex_symbol} wiece
 Dar pokuty;pala;1;2;Dar: Mag(x);{roll_symbol}Mag:\n1: Otrzymujesz 1k6 obrazen.\n 2-6:Nie dzieje sie nic.\n7-9: Zadjesz Mag*1k6 obrazen.\n10+: Zadajesz Mag*1k10 obrazen.;3*Mag {hex_symbol};;
 Patoszarza;fire;1;5;Akcja;"Przemiesc sie o max 9 {hex_symbol}.\n{roll_symbol}K za kazdy cel po drodze: Przegrany upada. \nNa czas szarzy otrzymujesz +20K";9 {hex_symbol};;
 Mlot bojowy;item;2;0;Przedmiot 1 reczny;{damage_symbol}: S+1k6.\nTrafienie: 10% na ogluszenie na 1 ture.;1 {hex_symbol};;
-Zamach;fire;2;4;Akcja;{roll_symbol}WW + 10: Zatakuj wszystkich w okol siebie.;Otaczajace {hex_symbol};;
 Ma gadane;hobbit;:3;5;(Re)akcja;"{roll_symbol}Ogl/Sw:\nZagadujesz cel. Traci on 3 {ap_symbol} (teraz lub w swojej turze). \nZwiekszasz szanse o 15 za kazdy wydany {ap_symbol} powyzej 1.)";6 {hex_symbol};;
 Kosciana zbroja;necro;1;1;Re(Akcja);"Poloz na tej karcie 1+Mag {charge_symbol} (max 4) \nZyskujesz 1 pancerza za kazdy {charge_symbol}. \nZdejmij {charge_symbol} za kazdym razem, gdy otrzymasz obrazenia.";;;
 Modlitwa;pala;:4;0;Akcja;Poloz na tej karcie 1 {charge_symbol} za kazdy wydany {ap_symbol}.\nDo konca walki dostajesz +2 do testow Magii za kazdy {charge_symbol}. \nPrzy 3 {charge_symbol} : Zyskujesz 1 dodatkowy {ap_symbol} co ture.;;;
