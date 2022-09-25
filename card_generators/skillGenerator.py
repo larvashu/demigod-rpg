@@ -131,13 +131,16 @@ class SkillGenerator(BaseGenerator):
         self.create_border(ax, p)
 
         ##draw top parameter
-        self.draw_action_points_cost(ax)
+        if skill.type != 'talent':
+            self.draw_action_points_cost(ax)
 
         #draw bottom parameter
-        if skill.card_type == "Towarzysz":
-            self.draw_compation_hp(ax)
-        else:
-            self.draw_cooldown(ax)
+        if skill.type != 'talent':
+            print('tu')
+            if skill.card_type == "Towarzysz":
+                self.draw_compation_hp(ax)
+            else:
+                self.draw_cooldown(ax)
 
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         temp_image = Image.open(self.tmp_file)

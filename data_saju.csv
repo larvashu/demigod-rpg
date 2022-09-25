@@ -1,29 +1,57 @@
+Seria;mist;0;0;Pasyw;Kazdy trafiony atak w tej samej serii powyzej:\n2: Ignoruje 1 {armor_symbol}\n3: Leczy cie za {Mag}.\n4:Pozwala wykonac 1 dodatkowy darmowy atak (raz na ture).;;;
+
+
+Oburecznosc;talent;;;Talent;Mozesz uzywac 2 jednorecznych broni.\nJezeli trafisz pierwsza bronia, atak druga kosztuje 1 {ap_symbol} mniej.;;;
+Atak okazyjny;talent;;;Talent;"Jezeli na tej karcie nie ma {cd_symbol}, gdy przeciwnik porusza sie obok Ciebie, mozesz takowy polozyc, aby wykonac darmowy atak okazyjny.";;;
+Mocna glowa;talent;;;Talent;"Zyskujesz +30 odpornosci na ogluszenie";;;
+
+Teraz to mnie wkur...;fire;0;0;Pasyw;Masz +1 WW za kazdy brakujacy {hp_symbol};;;
+Shuriken;item;1;0;Bron: 1 reczna;"{damage_symbol}: 1k4\nPrzeladowanie: 1 {ap_symbol}.\nMozesz traktowac ten przemiot jako 2-reczny, przeladowanie kosztuje wtedy 0 {ap_symbol}.";Sila + 5 {hex_symbol};;
+Dwureczny topor;item;3;0;Przedmiot 2 reczny;Wymaga 4 Sily\n{damage_symbol}: S+1k8\nKrytyk: Obniza pancerz celu o 1k4.;1 {hex_symbol};;
+Mlot bojowy;item;2;0;Bron: 1 reczna;{damage_symbol}: S-1+1k6.\nKrytyk:  {roll_symbol} Sila*10/K: \nOgluszasz cel na 1 ture.;1 {hex_symbol};;
+Celowanie na sniadanie;hobbit;:2;1;Akcja: Proca;Twoj nastepny atak ma:\n+3 {hex_symbol} zasiegu.\n+15 US za kazdy {ap_symbol}.\nOraz {ap_symbol} * 15% na spowolnienie celu o 2 na 1 ture.;;;
+Patoszarza;fire;1;5;Akcja;"Przemiesc sie o max 9 {hex_symbol}.\n{roll_symbol}K za kazdy cel po drodze: Przegrany upada. \nNa czas szarzy otrzymujesz +10K za kazde 3 przebyte {hex_symbol}";9 {hex_symbol};;
+Od tylca;shadow;0;0;Pasyw;Gdy znajdujesz sie za celem:\n+10 WW i +10 krytyka.;;;
+Bystry Konus;hobbit;0;0;Pasyw;"Ataki przeciwko Tobie maja -15.\n\n Zyskujesz +15 do inicjatywy.\n \nJezeli na tej karcie nie ma {charge_symbol}, mozesz owy polozyc, by zyskac 2 {ap_symbol}";;;;
+Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;
+Zywa Mgla;mist;0;0;Akcja przelaczana;"We mgle wszystkie ataki procz Twoich maja -15.\n\n@: podwajasz efekt mgly, jednak mozesz wykonywac jedynie akcje ruchu.";;;
+Dar pokuty;pala;1;2;Dar: Mag(x);{roll_symbol}Mag:\n1: Otrzymujesz 1k6 obrazen.\n 2-6:Nie dzieje sie nic.\n7-9: Zadjesz Mag*1k6 obrazen.\n10+: Zadajesz Mag*1k10 obrazen.;3*Mag {hex_symbol};;
+Skorzany kaftan;item;0;0;Przedmiot: Zbroja;Wymaga 3 Sily.\nZapewnia 1 &.;;
+Tunel we mgle;mist;0;2;Akcja;Mozesz przemiescic sie na dowolne zamglone pole, nie prowokujac atakow okazyjnych.;12 {hex_symbol};;;
+Roztoczenie - Sublimacja;mist;1;0;Akcja przelaczana;"Roztaczasz mgle na 1+Mag {hex_symbol}. \n \n@:Otrzymujesz 2 Sily oraz pancerza za kazdy punkt Magii.";;;
+Tornado;mist;2;4;Akcja: Mag(6);"{roll_symbol}SW/K: Cel upada.";Otaczajace {hex_symbol} we mgle.;;;
+Twoj osobisty Goliat;hobbit;0;5;Akcja;"Daj celowi te karte.\nTwoje przeciwko oznaczonemu celowi zadaja dodatkowo 1k4 obrazen.\n1{ap_symbol} : Wroc te karte do swojej reki.";Cala plansza.;;
+Kocie ruchy;shadow;1;3;Akcja;Po ruchu: kosztuje 0 {ap_symbol}.\nPrzemiesc sie za plecy celu.;6 {hex_symbol};;
+Znoszona kolczuga;item;0;0;Przedmiot: Zbroja;Wymaga: 4 Sily.\nZapewnia 2 &.;;;
+Aniol Sigmara;pala;1;4;Dar: Mag (7);Twoj cel otrzymuje:\n+10 WW\n+1 Sily\n+10 Odp\n+10 SW.;"1 {hex_symbol}, kazda wartosc pomnoz o Mag.";;
+Tarcza prawosci;pala;1;3;Dar (szybki): Mag 6;Blokujesz Mag + {cd_symbol} pkt obrazen.\nGdy tarcza zostanie przebita: Odwroc te karte obrazkiem do dolu.;7 {hex_symbol};;
+Wszystko farci..;hobbit;0;1;Akcja;Powtorz swoj dowolny rzut.;;;
+Adrenalina;shadow;0;4;Akcja;"Zdejmij do 2 {cd_symbol} ze swojej dowolnej karty.";;;
+Zew krwi;fire;0;0;Pasyw;"Za kazdym razem gdy zadasz obrazenia, usun do 2 {cd_symbol} ze swoich umiejetnosci.";;;
+Wiatr we wlosach;fire;0;5;Akcja;Twoj nastepny atak kosztuje 2 {ap_symbol} mniej.;;;
+Ma gadane;hobbit;:3;1;Akcja szybka;"{roll_symbol}Ogl/Sw:\nZagadujesz cel. Traci on 3 {ap_symbol}, \n teraz lub w swojej turze.\n Zwiekszasz szanse o 10 za kazdy wydany {ap_symbol} powyzej 1.";6 {hex_symbol};;
+Kumulacja;hobbit;0;0;Pasyw;"Poloz {cd_symbol} po udanym rzucie, zdejmij po nieudanym (max 5).\n\nPrzy >3 {cd_symbol} : Wszystkie Twoje rzuty maja +5 za kazdy {cd_symbol}.";;;
+Modlitwa;pala;:3;0;Akcja;Poloz na tej karcie 1 {charge_symbol} za kazdy wydany {ap_symbol}.\nDo konca walki dostajesz +2 do testow Magii za kazdy {charge_symbol}. \nPrzy 3 {charge_symbol} : Zyskujesz 1 dodatkowy {ap_symbol} co ture.;;;
+Strzal za trzy punkty;necro;0;0;Pasyw;"Zyskujesz 3 {hex_symbol} zasiegu uzywajac broni zasiegowej.\n\nDostajesz +1 do {damage_symbol} za kazdy {hex_symbol} powyzej 12 ktory dzieli Cie od celu.";;;
+Prosta proca;item;1;0;Bron 2 reczna;{damage_symbol}: 1k4\nPrzeladowanie: 1 {ap_symbol}\n{roll_symbol}Zr po trafieniu:\nAutomatyczne przeladowanie.;Sila + 7 {hex_symbol};;
+Kusza reczna;item;1;0;Bron: 1 reczna;"{damage_symbol}: 2k2 + 1.\nZaczynasz walke z 3 {charge_symbol}.\nPo ataku, zdejmij {charge_symbol}.\n Przeladowanie: 2 {ap_symbol}.";12 {hex_symbol};;
+Sloj Zhen'In;mist;0;0;Przedmiot uzywalny;Roztaczasz mgle na 1 {hex_symbol} wiecej. \n \n@: Rzuc sloj na max Sila +3 {hex_symbol}. Roztacza mgle na 2 {hex_symbol}.;;;
+Wiara czyni cuda;pala;0;1;Akcja;"Za kazdym razem gdy uzyjesz Daru, poloz {charge_symbol} na tej karcie. \n3{charge_symbol} : Zyskujesz 1 {ap_symbol}.";;;;
 Jastrzab z Jingthorn;necro;3;6;Towarzysz;Szybkosc: 12. SW WW/US +20.\n1{ap_symbol} : oznacz cel na 1 ture (1 {hex_symbol}). Jezeli cel jest juz oznaczony, zamiast tego zadaj 1k2 obrazen.\n Twoje ataki przeciwko oznaczonemu celowi maja +10 do WW i US.;;;
-Odskok;necro;1;1;Akcja szybka;"{roll_symbol} Zr: Unikasz ciosu i przemieszczasz sie o max 2 {hex_symbol}";;;
 Detekcja slabych punktow;necro;0;0;Pasyw;"Na poczatku kazdej rundy i po kazdym udanym ataku, poloz {charge_symbol} na tej karcie (max 5).\n\nTwoje ataki ignoruja 1{armor_symbol} za kazdy{charge_symbol}";;;
-Strzal za trzy punkty;necro;0;0;Pasyw;"Zyskujesz 5 {hex_symbol} zasiegu uzywajac broni zasiegowej.\n\nDostajesz +1 do {damage_symbol} za kazdy {hex_symbol} powyzej 12 ktory dzieli Cie od celu.";;;
-Kusza reczna;item;1;0;Bron: Kusza;"{damage_symbol}: 1k6.\nZaczynasz walke z 3 {charge_symbol}.\nPo ataku, zdejmij {charge_symbol}.\n Przeladowanie: 2 {ap_symbol}.";12 {hex_symbol};;
 Belt przewodnik;necro;1;1;Akcja: Kusza;"Twoj nastepny atak ma +10 do US.\nJezeli trafisz, poloz dodatkowy {charge_symbol} na 'Detekcje slabych punktow'";;;
 Nie usiedzi w miejscu;necro;0;0;Pasyw;"Dostajesz +1 szybkosci.\nJezeli nie wykonasz akcji ruchu w turze, poloz {charge_symbol} na tej karcie. Jezeli na tej karcie jest {charge_symbol}, dostajesz -30 do wszystkich rzutow. 1 {ap_symbol} : Zdejmij {charge_symbol} z tej karty.";;;
 Zamach;fire;2;4;Akcja;{roll_symbol}WW + 10: Zatakuj wszystkie postacie w okol siebie.;Otaczajace {hex_symbol};;
 Zombie Zoo;necro;0;0;Pasyw;"Mozesz kontrolowac do 1*Mag nieumarlych Towarzyszy.\n2{ap_symbol} : Wskrzes Towarzysza (8 {hex_symbol}).\nGdy Towarzysz ginie, zadaje Mag*1k6 obrazen do okola. \n";;;
+Unik;shadow;0;2;Reakcja;{roll_symbol}Zr: Unikasz ciosu.\nMozesz wydac 1 {ap_symbol} by dodac 10 do rzutu.;;;
+Odskok;necro;1;1;Akcja szybka;"{roll_symbol} Zr: Unikasz ciosu i przemieszczasz sie o max 2 {hex_symbol}";;;
 
 
 
 
-Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;
 Czasospowalniacz;item;0;0;Przedmiot uzywalny;"Masz dodatkowa minute na wykonanie ruchu.\nJezeli na tej karcie nie ma {charge_symbol}, mozesz takowy polozyc, aby zdjac {cd_symbol} z dowolnej karty.";;;
-Wiara czyni cuda;pala;0;1;Akcja;"Za kazdym razem gdy uzyjesz Daru, poloz {charge_symbol} na tej karcie. \n2{charge_symbol}: Zyskujesz 1 {ap_symbol}.";;;;
-Zywa Mgla;mist;0;0;Akcja przelaczana;"We mgle wszystkie ataki procz Twoich maja -15.\n\n@: podwajasz efekt mgly, jednak mozesz wykonywac jedynie akcje ruchu.";;;
 Serwis Zwlok;necro;2;3;Akcja;Przywroc Mag*k10 {hp_symbol}.;8 {hex_symbol}, tylko na Towarzysza.;;;
-Sloj Zhen'In;mist;0;0;Przedmiot uzywalny;Roztaczasz mgle na 1 {hex_symbol} wiecej. \n@: Rzuc sloj. Roztacza mgle na 2 {hex_symbol}.;;;
-Dar pokuty;pala;1;2;Dar: Mag(x);{roll_symbol}Mag:\n1: Otrzymujesz 1k6 obrazen.\n 2-6:Nie dzieje sie nic.\n7-9: Zadjesz Mag*1k6 obrazen.\n10+: Zadajesz Mag*1k10 obrazen.;3*Mag {hex_symbol};;
-Patoszarza;fire;1;5;Akcja;"Przemiesc sie o max 9 {hex_symbol}.\n{roll_symbol}K za kazdy cel po drodze: Przegrany upada. \nNa czas szarzy otrzymujesz +20K";9 {hex_symbol};;
-Mlot bojowy;item;2;0;Przedmiot 1 reczny;{damage_symbol}: S+1k6.\nTrafienie: 10% na ogluszenie na 1 ture.;1 {hex_symbol};;
-Ma gadane;hobbit;:3;5;(Re)akcja;"{roll_symbol}Ogl/Sw:\nZagadujesz cel. Traci on 3 {ap_symbol} (teraz lub w swojej turze). \nZwiekszasz szanse o 15 za kazdy wydany {ap_symbol} powyzej 1.)";6 {hex_symbol};;
 Kosciana zbroja;necro;1;1;Re(Akcja);"Poloz na tej karcie 1+Mag {charge_symbol} (max 4) \nZyskujesz 1 pancerza za kazdy {charge_symbol}. \nZdejmij {charge_symbol} za kazdym razem, gdy otrzymasz obrazenia.";;;
-Modlitwa;pala;:4;0;Akcja;Poloz na tej karcie 1 {charge_symbol} za kazdy wydany {ap_symbol}.\nDo konca walki dostajesz +2 do testow Magii za kazdy {charge_symbol}. \nPrzy 3 {charge_symbol} : Zyskujesz 1 dodatkowy {ap_symbol} co ture.;;;
-Seria;mist;0;0;Pasyw;Kazdy trafiony atak w tej samej serii powyzej:\n2: leczy cie za {Mag}.\n3: Ignoruje 1 pancerza.\n6:Pozwala wykonac 1 dodatkowy darmowy atak.;;;
 Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;
 Megamagnez;item;3;4;Przedmiot Ogromny;"{roll_symbol} Int/K: Cel traci dowolny przedmiot, ktory przyciagasz o 1k6 pol w swoja strone. \nZmniejszasz szanse o 2 za kazdy {hex_symbol} pomiedzy wami.";10 {hex_symbol}.;;
 Czasospowalniacz;item;0;0;Przedmiot uzywalny;"Masz dodatkowa minute na wykonanie ruchu.\nJezeli na tej karcie nie ma {charge_symbol}, mozesz takowy polozyc, aby zdjac {cd_symbol} z dowolnej karty.";;; "
