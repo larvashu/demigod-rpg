@@ -1,0 +1,10 @@
+Czujnosc;shielder;0;0;Pasyw;Gdy konczysz swoja ture, otrzymujesz 1 {ap_symbol}.\n Tracisz 1 {ap_symbol} przed poczatkiem swojej tury.;;;
+Grzmotniecie tarcza;shielder;1;2;Akcja: Tarcza;"{roll_symbol} WW+4: \nZadaj obrazenia rowne Sile wymaganej przez tarcze. \nKrytyk: +2, ogluszenie (2 {cd_symbol}).";1 {hex_symbol}.;;
+Drewniana tarcza;item;0;0;Tarcza;Wymaga 4 sily.\nObnizasz WW i US atakujacych Cie postaci o 2.\n\n 1 {ap_symbol} : Obniz o 2 WW/US atakujacej Cie jednostki (raz na atak).;;;
+Obelga;shielder;:3;3;Akcja;"Cel wykonuje {roll_symbol} na SW (-2 * {ap_symbol} ).\n\n Porazka: wrecz celowi status 'Sprowokowany' (2 {cd_symbol}) ze swoja podobizna.";7 {hex_symbol};;;
+Zemsta;shielder;1;0;Akcja;"Za kazdym razem gdy otrzymasz obrazenia, poloz {charge_symbol} na tej karcie.\n \n X {charge_symbol} : Zwieksz zadane obrazenia o X.";1 {hex_symbol};;;
+Heroiczna obrona;shielder;0;5;Reakcja;Przemiesc sie do atakowanego sojusznika, przemiesc go o 1 {hex_symbol} i przyjmij cios na siebie.;7 {hex_symbol};;
+Zbroja plytowa;item;0;0;Zbroja;Wymaga 5 sily.\nZapewnia 3 {armor_symbol}.\nObniza zrecznosc o 2.\nObniza wynik testow Magii o 3.;;;
+Kolczaste rekawice;item;0;0;Zbroja: Rece;"Zapewnia 1 {armor_symbol}.\nGdy otrzymujesz cios z odleglosci 1 {hex_symbol}, atakujacy otrzymuje 1 punkt obrazen (ignoruje {armor_symbol}).";;;
+Stalowa palka;item;2;0;Bron 1 reczna;"{damage_symbol}: S-3 + 1k4.\nKrytyk: Ogluszasz cel.";;;
+Twardo stapajacy;talent;;;Atut;"Zyskujesz +5 odpornosci na powalenie.";;;

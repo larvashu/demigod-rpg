@@ -1,0 +1,7 @@
+Przerazony;state;0;0;Stan - Niefizyczny;Nie mozesz wykonywac akcji.\n Na poczatku tury, rusz sie do przodu o 2 * Szybkosc.\n\n Na koniec tury mozesz wykonac {roll_symbol}SW aby zdjac pozostale {cd_symbol} z tej karty.;;;
+Sprowokowany;state;0;0;Stan - Niefizyczny;Nie mozesz wykonywac akcji, do poki nie zaatakujesz zrodla prowokacji. \n Na koniec tury mozesz wykonac {roll_symbol}SW aby zdjac pozostale {cd_symbol} z tej karty.;;;
+Ogluszenie;state;0;0;Stan - Fizyczny;Nie mozesz wykonywac zadnych akcji. Twoje zachowane {ap_symbol} przepadaja.;;;
+Powalenie;state;0;0;Stan - Fizyczny;Nie mozesz wykonywac akcji procz wstawania.\n 1 {ap_symbol}, {roll_symbol} Zr: Wstajesz. Jesli Ci sie nie udalo, wydaj dodatkowy 1 {ap_symbol} by wstac automatycznie.;;;
+Spowolniony;state;0;0;Stan - Fizyczny;Masz o {charge_symbol} mniej Szybkosci.;;;
+Krwawienie;state;0;0;Stan - Fizyczny;Na poczatku tury tracisz 1 {hp_symbol}.\n Cel moze posiadac wiele statusow krwawienia.;;;
+Zatrucie botulina;state;0;0;Stan - Zatrucie;"Na poczatku swojej tury tracisz 1 {hp_symbol} za kazdy {charge_symbol}.                      Juz zatruty: doloz odpowiednia ilosc {cd_symbol} i {charge_symbol} (max 3).";;;

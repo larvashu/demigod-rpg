@@ -1,0 +1,10 @@
+Celowanie na sniadanie;hobbit;:2;1;Akcja: Proca;Twoj nastepny atak ma:\n+3 {hex_symbol} zasiegu.\n+2 US za kazdy {ap_symbol}.\n{roll_symbol} 1-3: Spowolniasz cel o 2 na 2 tury.;;;
+Ma gadane;hobbit;2;1;Akcja szybka;"{roll_symbol} Ogl/Sw:\nZagadujesz cele przed soba.\nTraca one po 1k2 {ap_symbol} w swojej turze.";7 {hex_symbol} przed Toba.;;
+Bystry Konus;hobbit;0;0;Pasyw;"Ataki przeciwko Tobie maja -2.\n\n Zyskujesz +10 do inicjatywy.\n \nJezeli na tej karcie nie ma {charge_symbol}, mozesz owy polozyc, by zyskac 2 {ap_symbol}";;;;
+Kumulacja;hobbit;0;0;Pasyw;"Poloz {cd_symbol} po udanym rzucie, zdejmij po nieudanym (max 5).\n\nPrzy >3 {cd_symbol} : Wszystkie Twoje rzuty maja +1 na powodzenie za kazdy {cd_symbol}.";;;
+Twoj osobisty Goliat;hobbit;0;5;Akcja;"Daj celowi te karte.\nTwoje ataki przeciwko oznaczonemu celowi zadaja dodatkowo 1k4 obrazen.\n1{ap_symbol} : Wroc te karte do swojej reki.";Cala plansza.;;
+Wszystko farci..;hobbit;0;1;Akcja;Powtorz swoj dowolny rzut.;;;
+Prosta proca;item;1;0;Bron 2 reczna;{damage_symbol}: 1 + 1k4\n Przeladowanie: 1 {ap_symbol}\n\n {roll_symbol} Zr podczas przeladowania: Przeladowanie jest darmowe.\n;Sila + 8 {hex_symbol};;
+Uniki;talent;;;Atut;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz probowac unikac ciosow WW\n(  {roll_symbol} Zr - 5). \nJezeli Ci sie nie uda, poloz {cd_symbol}. Mozesz wydac 1 {ap_symbol} aby zwiekszyc szanse o 20.";;;
+Akcja!;talent;;;Atut;Masz +2 do maksymalnych {ap_symbol}.;;;
+Miedzy nogami;hobbit;;;Pasyw;Mozesz przechodzic przez pola na ktorych stoja wieksze od Ciebie jednostki, jednak nie mozesz sie na nich zatrzymywac.;;;

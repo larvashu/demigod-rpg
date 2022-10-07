@@ -1,0 +1,9 @@
+Roszada;shadow;1;2;Akcja;"Odskocz do tylu, nie powodujac atakow okazyjnych.\nMozesz za darmo zmienic lub\n dobrac bron.";4 {hex_symbol};;
+Sprzedaz kosy;shadow;1;3;Akcja: Sztylet;"{roll_symbol} WW lub ZR:\n Zadaj 3 + {damage_symbol} swojej broni.\n\n Cel otrzymuje 1k2 krwawien (3 {cd_symbol}). \nMozliwy krytyk.";;;
+Od tylca;shadow;0;0;Pasyw;Gdy znajdujesz sie za celem:\n+5 do WW i krytyka.;;;
+Adrenalina;shadow;0;4;Akcja;"Zdejmij do 2 {cd_symbol} ze swojej dowolnej karty.";;;
+Kocie ruchy;shadow;1;3;Akcja;Po ruchu: kosztuje 0 {ap_symbol}.\nPrzemiesc sie za plecy celu.;6 {hex_symbol};;
+Prosty sztylet;item;2;0;Przedmiot 1 reczny;"{damage_symbol}: S-3 + 1k4.\nKrytyk: {damage_symbol} * 2.\nJezeli trafisz, odzyskujesz 1 {ap_symbol}.";1 {hex_symbol};;
+Shuriken;item;1;0;Bron: 1 reczna;"{damage_symbol}: 1k4\nPrzeladowanie: 1 {ap_symbol}.\nMozesz traktowac ten przemiot jako 2-reczny, przeladowanie kosztuje wtedy 0 {ap_symbol}.";Sila + 4 {hex_symbol};;
+Uniki;talent;;;Atut;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz probowac unikac ciosow WW\n(  {roll_symbol} Zr - 5). \nJezeli Ci sie nie uda, poloz {cd_symbol}. Mozesz wydac 1 {ap_symbol} aby zwiekszyc szanse o 20.";;;
+Oburecznosc;talent;;;Atut;Mozesz uzywac 2 jednorecznych     broni (bez kar).\nJezeli trafisz pierwsza bronia, atak druga kosztuje 1 {ap_symbol} mniej.;;;

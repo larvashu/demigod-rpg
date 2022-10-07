@@ -1,411 +1,319 @@
-from random import randrange
+import os
+import textwrap
+import time
 
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
-
+from matplotlib import patches
 from card_generators.baseGenerator import BaseGenerator
-
-char_background = "try1"
 
 
 class CharacterGenerator(BaseGenerator):
-    def generate(self, char):
-        W, H = (1240, 877)
 
-        im = np.array(Image.open(f'{self.img_folder}characters_backgrounds/{char_background}.png').resize((W, H)))
+    def generate(self, character):
+        W, H = (389, 559)
+        params = []
+        texture_params = []
+
+        # params for aligned borders
+        borders_start_width = 30
+        borders_end_width = 327
+        textures_resize_width = 213
+
+        # region border_params
+
+        # main border
+        param = {}
+        param['start_W'] = 1
+        param['start_H'] = 4
+        param['border_W'] = W - 6
+        param['border_H'] = H - 7
+        param['facecolor'] = 'none'
+        param['alligned'] = 0
+        params.append(param)
+
+        # title
+        param = {}
+        param['start_W'] = borders_start_width
+        param['start_H'] = 37
+        param['border_W'] = borders_end_width
+        param['border_H'] = 67
+        param['facecolor'] = 'white'
+        param['alligned'] = 0
+        params.append(param)
+
+        texture_param = {}
+        texture_param['start_W'] = 22
+        texture_param['start_H'] = -9 + self.y_offset
+        texture_param['file'] =  f'{self.skills_art_folder}type_back.jpg'
+        texture_param['resize_W'] = textures_resize_width
+        texture_param['resize_H'] = 41
+        texture_params.append(texture_param)
+
+        # description
+        param = {}
+        param['start_W'] = borders_start_width
+        param['start_H'] = 100
+        param['border_W'] = borders_end_width
+        param['border_H'] = 390
+        param['facecolor'] = 'white'
+        param['alligned'] = 35
+        params.append(param)
+
+        texture_param = {}
+        texture_param['start_W'] = 22
+        texture_param['start_H'] = 55+self.y_offset
+        texture_param['file'] = self.desc_background_image
+        texture_param['resize_W'] = textures_resize_width
+        texture_param['resize_H'] = 256
+        params.append(param)
+        texture_params.append(texture_param)
+
+
+        #endregion
+
+        im = np.array(Image.open(f'{self.img_folder}card_backgrounds/{character.type}.png').resize((W,H)))
         fig, ax = plt.subplots()
         ax.imshow(im)
 
-        params, texture_params = self.compute_borders_and_textures(char, W, H)
-
-        #add borders and textures layers
-        for i in range(5):
-            borders = []
-            textures = []
-
-            for par in params:
-                if par.get('layer') == i:
-                    borders.append(par)
-
-            for tpar in texture_params:
-                if tpar.get('layer') == i:
-                    textures.append(tpar)
-
-            self.add_layer(ax, borders, textures)
-            im, fig, ax = self.refresh_img()
-
-        params = self.compute_grid()
-        for p in params:
-            self.create_border(ax, p)
-
-        # plt.close()
-        plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
-
-        temp_image = Image.open(self.tmp_file)
-        plt.close()
-
-        self.refresh_img()
-        plt.close()
-        self.write_name_and_race(temp_image, char.name, char.race)
-
-        self.refresh_img()
-        plt.close()
-        self.write_main_stats_bar(temp_image, 'Primary')
-
-        self.refresh_img()
-        plt.close()
-        signs = ["Ą", "ą", "Ć"]
-        self.write_sings(temp_image, signs, 80, 180, 465, 25, 15, 25)
-
-        signs = ["ę", "Ń"]
-        self.write_sings(temp_image,signs, 387, 455, 160, 25, 14, 22)
-
-        signs = ["Ę","ć"]
-        self.write_sings(temp_image,signs, 387, 455, 160+150, 25, 14, 22)
-
-        signs = ["ł", "Ł", "ń"]
-        self.write_sings(temp_image,signs, 387, 455, 160+300, 25, 14, 22)
-
-        self.refresh_img()
-        plt.close()
-        self.write_secondary_stats_text_and_bar(temp_image, 'Secondary')
-
-        self.refresh_img()
-        plt.close()
-        # self.write_masteries_bar(temp_image, 'Masteries')
-        #
-        self.refresh_img()
-
-        # show and save image
-        plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
-        plt.show()
-        plt.close()
-
-        temp_image = Image.open(self.tmp_file).resize((W, H))
-        temp_image.save(f'output/champions/{char.name}.png')
-
-    def write_name_and_race(self, temp_image, name, race):
-        fontsize = 17
-        # TODO: switch to python 3.10 and use match
-        if not race:
-            race = ""
-        if len(name) + len(race) > 20:
-            return print('name and race too long, not processed (max name and race length is 20 chars)')
-
-        if len(name) + len(race) >= 13:
-            fontsize = 11
-
-        if len(name) + len(race) >= 10:
-            fontsize = 12
-
-
-        font = ImageFont.truetype('resources/fonts/end.ttf', fontsize)
-        draw = ImageDraw.Draw(temp_image)
-        w, h = font.getsize(name)
-        if race:
-            w, h = font.getsize(name+race)
-            draw.text(((175 - w) / 2, (325 - h) / 2), f'{name}, {race}', (7, 0, 0), font=font)
-        else:
-            draw.text(((175 - w) / 2, (325 - h) / 2), f'{name}', (7, 0, 0), font=font)
-
-        # save temp image
-        temp_image.save(self.tmp_file)
-
-    def write_main_stats_bar(self, temp_image, bar_name):
-        fontsize = 24
-
-        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-        draw = ImageDraw.Draw(temp_image)
-        w, h = font.getsize(bar_name)
-        draw.text(((178 - w) / 2, (430 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
-                  stroke_fill='black')
-
-        # save temp image
-        temp_image.save(self.tmp_file)
-
-    def write_secondary_stats_text_and_bar(self, temp_image, bar_name):
-        fontsize = 21
-
-        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-        draw = ImageDraw.Draw(temp_image)
-        w, h = font.getsize(bar_name)
-        draw.text(((655 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
-                  stroke_fill='black')
-
-        fontsize = 12
-        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-        w, h = font.getsize('Base')
-        draw.text(((892 - w) / 2, (169 - h) / 2), f'Total', (55, 55, 55), font=font)
-
-        fontsize = 12
-        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-        w, h = font.getsize('Bonus')
-        draw.text(((807 - w) / 2, (169 - h) / 2), f'Bonus', (55, 55, 55), font=font)
-
-        fontsize = 12
-        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-        w, h = font.getsize('Base')
-        for i in range(280):
-            draw.text(((392 - w) / 2+i, (310 - h) / 2), f'-', (0, 0, 0), font=font)
-
-        fontsize = 12
-        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-        w, h = font.getsize('Base')
-        for i in range(280):
-            draw.text(((392 - w) / 2+i, (460 - h) / 2), f'-', (0, 0, 0), font=font)
-
-
-        # save temp image
-        temp_image.save(self.tmp_file)
-
-    def write_masteries_bar(self, temp_image, bar_name):
-        fontsize = 21
-
-        font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-        draw = ImageDraw.Draw(temp_image)
-        w, h = font.getsize(bar_name)
-        draw.text(((810 - w) / 2, (106 - h) / 2), f'{bar_name}', (255, 255, 255), font=font, stroke_width=1,
-                  stroke_fill='black')
-
-        # save temp image
-        temp_image.save(self.tmp_file)
-
-    def write_sings(self, temp_image, signs,text_w_start, w_start,x_start,space,sign_size,font_size):
-
-        draw = ImageDraw.Draw(temp_image)
-
-        i = 0
-        for sign in signs:
-            fontsize = font_size
-            font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-            i += 1
-            w, h = font.getsize(sign)
-            draw.text(((text_w_start - w) / 2, ((x_start - h) / 2) + i*space), f'{sign}', (5, 5, 5), font=font)
-            if not["Ą", "ą", "Ć"] == signs:
-
-                fontsize = 15
-                print(i)
-                print(signs)
-                font = ImageFont.truetype('resources/fonts/end.ttf', fontsize)
-                draw.text(((w_start + 298) / 2, ((x_start -8 - h) / 2) + i * space), f'+', (5, 5, 5), font=font)
-                draw.text(((w_start + 388) / 2, ((x_start -8 - h) / 2) + i * space), f'=', (5, 5, 5), font=font)
-                draw.text(((w_start + 214) / 2, ((x_start -8 - h) / 2) + i * space), f'=', (5, 5, 5), font=font)
-
-            if sign == "Ą":
-                fontsize = sign_size
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Strength')
-                draw.text(((w_start - w) / 2, ((x_start - h) / 2) + i * space), f'Strength', (55, 55, 55), font=font)
-
-            if sign == "ą":
-                fontsize = sign_size
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Agility')
-                draw.text(((w_start - w) / 2, ((x_start - h) / 2) + i * space), f'Agility', (55, 55, 55), font=font)
-
-            if sign == "Ć":
-                fontsize = sign_size
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Intelligence')
-                draw.text(((w_start - w) / 2, ((x_start - h) / 2) + i * space), f'Intelligence', (55, 55, 55), font=font)
-
-            if sign == "ć":
-                fontsize = sign_size
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Crit')
-                draw.text(((w_start - w-7) / 2, ((x_start - h) / 2) + i * space), f'Critic', (5, 5, 5), font=font)
-                fontsize = 17
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                draw.text(((w_start - w+87) / 2, ((x_start - h) / 2) + i * space), f' ę+ą-20', (5, 5, 5), font=font)
-
-            if sign == "Ę":
-                fontsize = 11
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Accuracy')
-                draw.text(((w_start - w+6) / 2, ((x_start - h) / 2) + i * space), f'Accuracy', (5, 5, 5), font=font)
-                fontsize = 20
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-
-                draw.text(((w_start - w+107) / 2, ((x_start-10 - h) / 2) + i * space), f' 1ę+2ą', (5, 5, 5), font=font)
-
-            if sign == "ę":
-                fontsize = 10
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Perception')
-
-                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Perception', (5, 5, 5), font=font)
-                fontsize = 20
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-
-                draw.text(((w_start - w+107) / 2, ((x_start-10 - h) / 2) + i * space), f' 3Ć+2ą', (5, 5, 5), font=font)
-
-            if sign == "Ł":
-                fontsize = 12
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Speed')
-                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Speed', (5, 5, 5), font=font)
-                fontsize = 20
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                draw.text(((w_start - w+77) / 2, ((x_start-10 - h) / 2) + i * space), f'   3+ą:4', (5, 5, 5), font=font)
-
-            if sign == "Ń":
-                fontsize = 10
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Charisma')
-                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Charisma', (5, 5, 5), font=font)
-                fontsize = 20
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-
-                draw.text(((w_start - w+107) / 2, ((x_start-10 - h) / 2) + i * space), f'3Ć+2Ą', (5, 5, 5), font=font)
-
-            if sign == "ł":
-                fontsize = 12
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('HP')
-                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'HP', (5, 5, 5), font=font)
-                fontsize = 20
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-
-                draw.text(((w_start - w + 80) / 2, ((x_start - 10 - h) / 2) + i * space), f'10+3Ą', (5, 5, 5), font=font)
-
-            if sign == "ń":
-                fontsize = 12
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-                w, h = font.getsize('Actions')
-
-                draw.text(((w_start - w+5) / 2, ((x_start - h) / 2) + i * space), f'Actions', (5, 5, 5), font=font)
-                fontsize = 20
-                font = ImageFont.truetype('resources/fonts/twb.ttf', fontsize)
-
-                draw.text(((w_start - w + 107) / 2, ((x_start - 10 - h) / 2) + i * space), f'4+ą:10', (5, 5, 5), font=font)
-
-
-        # save temp image
-        temp_image.save(self.tmp_file)
-
-        # main border
-
-    def compute_borders_and_textures(self, char, W, H):
-            dic = {}
-            #main frame
-            dic["border_main"] = [3,4,W-7,H-9,'none',0,0]
-
-            #portrait
-            dic["border_portrait"] = [50, 40, 350, 350, 'white', 35, 0]
-            dic["texture_portrait"] = [22,31,f'{self.chars_art_folder}{char.name}.jpg', 139, 137,0]
-
-            #main stats
-            dic["border_main_stats"] = [50,450,350,350,'white', 35, 0]
-            dic["texture_main_stats"] = [22,235, f'{self.desc_background_image}', 137, 97,0]
-            dic["texture_main_stats_bar"] = [22,195,f'{self.chars_art_folder}char_card_bar.png', 137, 37,0]
-            dic["border_ms_bar"] = [50,450,350,100,'none',35,0]
-
-            #secondary stats
-            dic["border_secondary_stats"] = [445,40,745,760,'white',35,0]
-            dic["texture_secondary_bar"] = [180,31,f'{self.chars_art_folder}char_card_bar.png',295, 39,0]
-            dic["texture_secondary_stats"] = [180,73,f'{self.desc_background_image}', 295,259,0]
-            dic["border_ss_bar"] = [445,45,745,100, 'none',35,0]
-
-            # #masteries
-            # dic["texture_masteries_bar"] = [336, 31, f'{self.chars_art_folder}char_card_bar.png', 137,39,0]
-            # dic["border_masteries"] = [834,40,350,760,'white',35,0]
-            # dic["texture_masteries"] = [336,73,f'{self.desc_background_image}', 137,259,0]
-            # dic["border_m_bar"] = [834,45,350,100,'none',35,0]
-
-            #name
-            dic["texture_name"] = [35,147,f'{self.desc_background_image}', 111, 32,0]
-            dic["border_name"] = [35,145,111,33,'none',0,1]
-
-            borders = []
-            textures = []
-            for item in dic:
-                if "texture" in item:
-                    textures.append(item)
-                if "border" in item:
-                    borders.append(item)
-
-            params = []
-            texture_params = []
-
-            for item in borders:
-                param = {}
-                param['start_W'] = dic[item][0]
-                param['start_H'] = dic[item][1]
-                param['border_W'] = dic[item][2]
-                param['border_H'] = dic[item][3]
-                param['facecolor'] = dic[item][4]
-                param['alligned'] = dic[item][5]
-                param['layer'] = dic[item][6]
-                params.append(param)
-
-            for item in textures:
-                texture_param = {}
-                texture_param['start_W'] = dic[item][0]
-                texture_param['start_H'] = dic[item][1]
-                texture_param['file'] = dic[item][2]
-                texture_param['resize_W'] = dic[item][3]
-                texture_param['resize_H'] = dic[item][4]
-                texture_param['layer'] = dic[item][5]
-                texture_params.append(texture_param)
-            return params, texture_params
-
-    def compute_grid(self):
-        dic = {}
-        params = []
-        #main stats
-        for i in range(3):
-            dic[f"border_secondary_main_stats_{i}"] = [129, 210 + i * 25, 20, 20, 'white', 35, 0]
-            # dic[f"border_secondary_main_stats_{i}{i}"] = [59, 210 + i * 25, 20, 20, 'white', 35, 0]
-
-        #secondary stats_stats
-        for j in range(3):
-            for i in range(2):
-                dic[f"border_secondary_bonus_stats_{j}-{i}"] = [392, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
-                dic[f"border_secondary_bonus_stats_{j}-{i}"] = [392, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
-                dic[f"border_secondary_bonus_stats_{j}-{i}-{randrange(1000)}"] = [351, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
-
-            for i in range(2):
-                dic[f"border_secondary_total_stats_{j}-{i}"] = [435, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
-                dic[f"border_secondary_bonus_stats_{j}-{i}-{randrange(1000)}"] = [351, 60+75*j + i * 25, 20, 20, 'white', 35, 0]
-
-        dic[f"border_secondary_bonus_stats_-1"] = [392, 60+75 + 5 * 25, 20, 20, 'white', 35, 0]
-        dic[f"border_secondary_bonus_stats_-2"] = [435, 60+75 + 5 * 25, 20, 20, 'white', 35, 0]
-        dic[f"border_secondary_bonus_stats_-{randrange(1000)}"] = [351, 60+75 + 5 * 25, 20, 20, 'white',
-                                                                          35, 0]
-
-        # for i in range(2):
-        #     dic[f"border_secondary_bonus_stats_{i}"] = [255, 110 + i * 25, 20, 20, 'white', 35, 0]
-        #
-        # for i in range(2):
-        #     dic[f"border_secondary_total_stats_{i}"] = [285, 110 + i * 25, 20, 20, 'white', 35, 0]
-
-
-        for item in dic:
-                param = {}
-                param['start_W'] = dic[item][0]
-                param['start_H'] = dic[item][1]
-                param['border_W'] = dic[item][2]
-                param['border_H'] = dic[item][3]
-                param['facecolor'] = dic[item][4]
-                param['alligned'] = dic[item][5]
-                param['layer'] = dic[item][6]
-                params.append(param)
-
-        return params
-
-    def add_layer(self, ax, params, texture_params):
-        #draw borders
         for p in params:
             self.create_border(ax, p)
         plt.axis('off')
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         plt.close()
 
-        #paste textures
+        #Add textures
         temp_image = Image.open(self.tmp_file)
         for tp in texture_params:
-            temp_image = self.paste_texture(temp_image, tp.get('start_W'), tp.get('start_H'), tp.get('file'),
-                                            tp.get('resize_W'), tp.get('resize_H'))
+            temp_image = self.paste_texture(temp_image, tp.get('start_W'), tp.get('start_H'), tp.get('file'), tp.get('resize_W'), tp.get('resize_H'))
         temp_image.save(self.tmp_file)
 
+        #refresh image
+        im, fig, ax = self.refresh_img()
+
+        #region write data on cards
+        #add title
+        self.refresh_img()
+        plt.close()
+        self.write_title(temp_image, character.name)
+
+        #add type
+        self.refresh_img()
+        plt.close()
+        self.write_description(temp_image, character)
+
+
+        #refresh image
+        self.refresh_img()
+        #endregion
+
+        #show and save image
+        plt.savefig(f'output/skills/{character.name}', bbox_inches='tight', pad_inches=0, transparent=True)
+        #TODO: uncomment this to show card after generated
+        # plt.show()
+        plt.close()
+
+        #resize
+        temp_image = Image.open(self.tmp_file).resize((389, 559))
+        print('here')
+        #makedir
+        dir = (f'output/chars/')
+        if not os.path.isdir(dir):
+            os.mkdir(dir)
+        temp_image.save(f'{dir}/{character.name}.png')
+
+
+    #drawing skill methods
+    def draw_cooldown(self, ax):
+        image_borders = patches.Circle((258, 367), 65, linewidth=2, edgecolor='black', facecolor='purple')
+        ax.add_patch(image_borders)
+        return ax
+    def draw_armor(self, ax):
+        image_borders = patches.Circle((258, 367), 65, linewidth=2, edgecolor='black', facecolor='gray')
+        ax.add_patch(image_borders)
+        return ax
+
+    def draw_compation_hp(self, ax):
+        image_borders = patches.Circle((258, 367), 65, linewidth=2, edgecolor='black', facecolor='red')
+        ax.add_patch(image_borders)
+        return ax
+
+
+    def write_cooldown_cost(self, temp_image, cd_cost):
+        font = ImageFont.truetype('resources/fonts/twb.ttf',57)
+        draw = ImageDraw.Draw(temp_image)
+        draw.text((220,313), cd_cost, (255, 255, 255), font=font,stroke_width=1, stroke_fill='black')
+        #save temp image
+        temp_image.save(self.tmp_file)
+
+    def draw_action_points_cost(self, ax):
+        image_borders = patches.Circle((-9, 7), 65, linewidth=2, edgecolor='black', facecolor='#3776ab')
+        ax.add_patch(image_borders)
+        return ax
+
+    def draw_attack(self, ax):
+        image_borders = patches.Circle((-9, 7), 65, linewidth=2, edgecolor='black', facecolor='gray')
+        ax.add_patch(image_borders)
+        return ax
+
+    #writing data methods
+    def write_ap_cost(self, temp_image, ap_cost):
+        font = ImageFont.truetype('resources/fonts/twb.ttf',57)
+        draw = ImageDraw.Draw(temp_image)
+        if ap_cost == "1":
+            draw.text((12, -2), ap_cost, (255, 255, 255), font=font, stroke_width=1, stroke_fill='black')
+        else:
+            draw.text((7,-2), ap_cost, (255, 255, 255), font=font,stroke_width=1, stroke_fill='black')
+        #save temp image
+        temp_image.save(self.tmp_file)
+
+    def write_description(self, temp_image, character):
+        nominal_width = 35
+        description = \
+            f'(PZ)  Punkty Zycia: {character.hp}' \
+            f'(A)   Akcje: {character.akcje}' \
+            f'(Sz)  Szybkosc: {character.szybkosc}' \
+            f'(S)   Sila: {character.sila}' \
+            f'(Mag) Magia: {character.mag}' \
+            f'(WW)  Walka wrecz: {character.ww}' \
+            f'(US)  Um. strzeleckie: {character.us}' \
+            f'(K)   Krzepa: {character.k}' \
+            f'(Odp) Odpornosc: {character.odp}' \
+            f'(Zr)  Zrecznosc: {character.zr}' \
+            f'(Sw)  Sila Woli: {character.sw}' \
+            f'(Ogl) Oglada: {character.ogl}'
+
+        print(description)
+        description = self.parse_special_chars(description)
+
+        description, spec_char_pos = self.parse_newlines(description, nominal_width)
+
+        print(description)
+        print(spec_char_pos)
+
+        fontsize = 22
+        multiplier = 1.07
+        _rangeMultiplier = 1.10
+        textwrapped = textwrap.wrap(description, width=35, replace_whitespace=False, drop_whitespace=False)
+        if len(textwrapped) > 4:
+            multiplier = 1.08
+            _rangeMultiplier = 1.11
+            fontsize = 13
+        font = ImageFont.truetype('resources/fonts/ct.ttf', fontsize)
+        draw = ImageDraw.Draw(temp_image)
+        w, h = font.getsize(textwrapped[0])
+
+        draw.text(((31),(115-h)), '\n'.join(textwrapped), (0, 0, 0), font=font)
+
+        i = 0
+        for line in textwrapped:
+            print(f"line: {line}")
+            for special_char_p in spec_char_pos:
+                if special_char_p['line_nr'] == i:
+                    for indic in special_char_p['indices']:
+                        if special_char_p['special_char'] == self.cd_symbol:
+                            try:
+                                prefix = line[0:indic]
+                                print(f'prefix: {prefix}')
+                                w,_h = font.getsize(prefix)
+                                # h = 15
+                                print(f'w, h: {w, h}')
+                                string = special_char_p['special_char']
+                                print(string)
+                                draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (147, 0, 150), font=font, stroke_width=1, stroke_fill='black')
+                            except:
+                                print('no trudno')
+
+                        if special_char_p['special_char'] == self.ap_symbol:
+                                try:
+                                    prefix = line[0:indic]
+                                    w, _h = font.getsize(prefix)
+                                    string = special_char_p['special_char']
+                                    print(string)
+                                    hs = 285
+                                    draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (0,191,255), font=font,
+                                              stroke_width=1, stroke_fill='black')
+
+                                except:
+                                    print('no trudno')
+
+                        if special_char_p['special_char'] == self.charge_symbol:
+                                try:
+                                    prefix = line[0:indic]
+                                    print(f'prefix 2: {prefix}')
+                                    w, _h = font.getsize(prefix)
+                                    # h = 15
+                                    print(f'w, h: {w, h}')
+                                    string = special_char_p['special_char']
+                                    print(string)
+                                    hs = 285
+                                    draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (50,205,50), font=font,
+                                              stroke_width=1, stroke_fill='black')
+
+                                except:
+                                    print('no trudno')
+
+                        if special_char_p['special_char'] == self.hp_symbol:
+                                print('hehe')
+                                try:
+                                    prefix = line[0:indic]
+                                    print(f'prefix: {prefix}')
+                                    w, h = font.getsize(prefix)
+                                    h = 16
+                                    print(f'w, h: {w, h}')
+                                    string = special_char_p['special_char']
+                                    print(string)
+                                    hs = 285
+                                    draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (255,69,0), font=font,
+                                              stroke_width=1, stroke_fill='black')
+
+                                except:
+                                    print('no trudno')
+            i += 1
+
+
+            # draw.text()
+        #save temp image
+        temp_image.save(self.tmp_file)
+    def write_type(self, temp_image, type, card_type):
+        fontsize = 22
+        #TODO: switch to python 3.10 and use match
+        if len(card_type) > 22:
+            return print('type too long, not processed (max type length is 22 chars)')
+
+        if len(card_type) > 13:
+            fontsize = 20
+
+        if len(card_type) > 17:
+            fontsize = 18
+
+        text = f'{card_type}'
+        font = ImageFont.truetype('resources/fonts/twb.ttf',fontsize)
+        draw = ImageDraw.Draw(temp_image)
+        w, h = font.getsize(text)
+        draw.text(((260-w)/2,(445-h)/2), text, (255, 255, 255), font=font, stroke_width=1, stroke_fill='black')
+        #save temp image
+        temp_image.save(self.tmp_file)
+
+    def write_title(self, temp_image, description):
+        fontsize = 21
+        #TODO: switch to python 3.10 and use match
+        if len(description) > 30:
+            return print('description too long, not processed (max description lenght is 24 chars)')
+
+        if len(description) > 13:
+            fontsize = 19
+
+        if len(description) > 21:
+            fontsize = 15
+
+        if len(description) > 25:
+            fontsize = 13
+
+        font = ImageFont.truetype('resources/fonts/end.ttf',fontsize)
+        draw = ImageDraw.Draw(temp_image)
+        w, h = font.getsize(description)
+        draw.text(((260-w)/2,(90-h)/2), description, (7, 0, 0), font=font)
+        #save temp image
+        temp_image.save(self.tmp_file)

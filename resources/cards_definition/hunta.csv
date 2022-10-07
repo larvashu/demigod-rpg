@@ -1,0 +1,9 @@
+Wypad z podcinka;hunta;1;3;Akcja: Wlocznia;"Twoj nastepny atak zyskuje 2 {hex_symbol} zasiegu. \nJezeli trafisz,  {roll_symbol} K/K:\n mozesz przyciagnac cel o max 2 {hex_symbol}.";;;
+Jastrzab z Jingthorn;hunta;3;6;Towarzysz;Szybkosc: 12. \n1{ap_symbol} : oznacz cel na 1 ture (1 {hex_symbol}). Jezeli cel jest juz oznaczony, zamiast tego zadaj 1k2 obrazen.\n Twoje ataki przeciwko oznaczonemu celowi maja +2 do WW i US.;;;
+Nie usiedzi w miejscu;hunta;0;0;Pasyw;"Dostajesz +1 szybkosci.\nJezeli wykonasz ruch w turze, poloz 2 {cd_symbol} na tej karcie (max 2).\n Jezeli na tej jest conajmniej 1 {cd_symbol}, dostajesz +4 do wszystkich atrybutow.";;;
+Belt przewodnik;hunta;1;1;Akcja: Kusza;"Twoj nastepny atak ma +2 do US.\nJezeli trafisz, poloz dodatkowy {charge_symbol} na 'Detekcje slabych punktow'";;;
+Detekcja slabych punktow;hunta;0;0;Pasyw;"Na poczatku kazdej tury, poloz {charge_symbol} na tej karcie (max 5). \n\nTwoje ataki ignoruja 1{armor_symbol} za kazdy{charge_symbol}. Przy 5 {charge_symbol} zadajesz dodatkowe 1k2 obrazen.";;;
+Kusza reczna;item;1;0;Bron: 1 reczna;"{damage_symbol}: 2k2 + 1.\nZaczynasz walke z 5 {charge_symbol}.\n 2 {ap_symbol} : przeladuj  1 {charge_symbol}.";12 {hex_symbol};;
+Zwadziak;item;3;0;Przedmiot 1 reczny;"{damage_symbol}: S-4 + 1k4.\nMozesz traktowac ten przedmiot jako 2 reczny, atak kosztuje wtedy 2 {ap_symbol}. Krytyk: +2, przewroc cel.";2 {hex_symbol};;
+Sokole oko;talent;;;Atut;"Masz +3 {hex_symbol} zasiegu podczas atakow dystansowych.";;;
+Szybkie dobieranie;talent;;;Atut;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz takowy polozyc by za darmo zmienic lub dobrac bron.";;;

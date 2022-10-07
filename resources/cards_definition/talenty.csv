@@ -1,0 +1,16 @@
+Uniki;talent;;;Atut;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz probowac unikac ciosow WW\n(  {roll_symbol} Zr - 2). \nJezeli Ci sie nie uda, poloz {cd_symbol}. Mozesz wydac 1 {ap_symbol} aby zwiekszyc szanse o 4.";;;
+Mocna glowa;talent;;;Atut;"Zyskujesz +5 odpornosci na ogluszenie.";;;
+Nie taki bezkrytyczny;talent;;;Atut;Dostajesz + 2 do krytyka.;;;
+Bieglosc - Mloty;talent;;;Atut;"Podczas uzywania mlotow, masz:\n +2 do krytyka\n+1 do obrazen.";;;
+Twardo stapajacy;talent;;;Atut;"Zyskujesz +5 odpornosci na powalenie.";;;
+Szybciej od wiatru;talent;;;Atut;"Masz +1 szybkosci.";;;
+Zywotny;talent;;;Atut;"Dostajesz +5 maksymalnego {hp_symbol}. \nDodatkowo, dostajesz +1 {hp_symbol} za kazdym razem gdy rozwijasz postac.";;;
+Sokole oko;talent;;;Atut;"Masz +3 {hex_symbol} zasiegu podczas atakow dystansowych.";;;
+Szybkie dobieranie;talent;;;Atut;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz takowy polozyc by za darmo zmienic lub dobrac bron.";;;
+Gruboskorny;talent;;;Atut;"Masz +1 {armor_symbol}.";;;
+Silacz;talent;;;Atut;"Masz +1 Sily.";;;
+Akcja!;talent;;;Atut;Masz +2 do maksymalnych {ap_symbol}.;;;
+Parowanie;talent;;;Atut: Bron WW;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz takowy polozyc, by\n sprobowac sparowac cios \n(  {roll_symbol} WW - 2).\nMozesz wydac 1 {ap_symbol}, by zwiekszyc szanse o 4.";;;
+Atak okazyjny;talent;;;Atut;"Jezeli na tej karcie nie ma {cd_symbol}, gdy przeciwnik porusza sie obok Ciebie, mozesz takowy polozyc, aby wykonac darmowy atak okazyjny.";;;
+Dzika magia;talent;;;Atut;Masz +1 Magii.;;;
+Oburecznosc;talent;;;Atut;Mozesz uzywac 2 jednorecznych     broni (bez kar).\nJezeli trafisz pierwsza bronia, atak druga kosztuje 1 {ap_symbol} mniej.;;;

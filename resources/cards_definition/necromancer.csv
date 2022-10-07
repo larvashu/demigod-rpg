@@ -1,0 +1,9 @@
+Klatwa slabosci;necro;1;-;Status: Mag(8);Daj celowi ta karte.\n Cel: Masz - 1 * Mag sily.\n 1 {ap_symbol}: Przenies ta karte na inny cel.;10 {hex_symbol}.;;;
+Swieze zombie;necro;3;14;Towarzysz;{damage_symbol} : 1k6.\n 2{ap_symbol} : Atak (1 {hex_symbol}).\n 1{ap_symbol} , po ataku : Cel otrzymuje 'Zatrucie botulina' (1 {charge_symbol} / 2 {cd_symbol}).\n Cel :  {roll_symbol} by uniknac zatrucia.;;;
+Trupie lapy;necro;1;4;Akcja: Mag(5 + x);Wzwieksz poziom trudnosci o Sile celu.\n Przygwazdzasz cel na [Mag] tur.;10 {hex_symbol};;;
+Wyssanie zycia;necro;2;2;Akcja: Mag(10);"Zadaj Mag * 1k4 obrazen celowi, i przywroc sobie ta sama wartosc {hp_symbol}.";10 {hex_symbol};;;
+Mroczna inkantacja;necro;1;1;Akcja;"Poloz {charge_symbol} na tej karcie za kazdy wydany {ap_symbol} {max 3}.\nZdejmij {charge_symbol} by do konca tury:\n1: Dostac +3 do testow Magii.\n 2: Obnizyc koszt akcji Mag o 1{ap_symbol}.\n 3, @: Zachowac bonusy na stale.";;;
+Czaszkostur;item;2;0;Przedmiot 1 reczny;"{damage_symbol}: S-4 + 1k4.\nMasz +2 do testow Magii.";;;
+Dzika magia;talent;;;Atut;Masz +1 Magii.;;;
+Przerazenie;necro;2;1;Akcja: Mag (10);{roll_symbol} Int/SW: Odwroc cel od siebie i przeraz go na 1 ture. \nJezeli Ci sie nie uda, poloz 2 dodatkowe {cd_symbol}.;10 {hex_symbol};;
+Amulet nekromanty;item;0;0;Przedmiot maly;Zapewnia 2 {m_armor_symbol}.;;;

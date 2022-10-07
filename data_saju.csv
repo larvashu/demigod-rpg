@@ -1,29 +1,62 @@
-Jastrzab z Jingthorn;necro;3;6;Towarzysz;Szybkosc: 12. SW WW/US +20.\n1{ap_symbol} : oznacz cel na 1 ture (1 {hex_symbol}). Jezeli cel jest juz oznaczony, zamiast tego zadaj 1k2 obrazen.\n Twoje ataki przeciwko oznaczonemu celowi maja +10 do WW i US.;;;
-Odskok;necro;1;1;Akcja szybka;"{roll_symbol} Zr: Unikasz ciosu i przemieszczasz sie o max 2 {hex_symbol}";;;
-Detekcja slabych punktow;necro;0;0;Pasyw;"Na poczatku kazdej rundy i po kazdym udanym ataku, poloz {charge_symbol} na tej karcie (max 5).\n\nTwoje ataki ignoruja 1{armor_symbol} za kazdy{charge_symbol}";;;
-Strzal za trzy punkty;necro;0;0;Pasyw;"Zyskujesz 5 {hex_symbol} zasiegu uzywajac broni zasiegowej.\n\nDostajesz +1 do {damage_symbol} za kazdy {hex_symbol} powyzej 12 ktory dzieli Cie od celu.";;;
-Kusza reczna;item;1;0;Bron: Kusza;"{damage_symbol}: 1k6.\nZaczynasz walke z 3 {charge_symbol}.\nPo ataku, zdejmij {charge_symbol}.\n Przeladowanie: 2 {ap_symbol}.";12 {hex_symbol};;
-Belt przewodnik;necro;1;1;Akcja: Kusza;"Twoj nastepny atak ma +10 do US.\nJezeli trafisz, poloz dodatkowy {charge_symbol} na 'Detekcje slabych punktow'";;;
-Nie usiedzi w miejscu;necro;0;0;Pasyw;"Dostajesz +1 szybkosci.\nJezeli nie wykonasz akcji ruchu w turze, poloz {charge_symbol} na tej karcie. Jezeli na tej karcie jest {charge_symbol}, dostajesz -30 do wszystkich rzutow. 1 {ap_symbol} : Zdejmij {charge_symbol} z tej karty.";;;
-Zamach;fire;2;4;Akcja;{roll_symbol}WW + 10: Zatakuj wszystkie postacie w okol siebie.;Otaczajace {hex_symbol};;
-Zombie Zoo;necro;0;0;Pasyw;"Mozesz kontrolowac do 1*Mag nieumarlych Towarzyszy.\n2{ap_symbol} : Wskrzes Towarzysza (8 {hex_symbol}).\nGdy Towarzysz ginie, zadaje Mag*1k6 obrazen do okola. \n";;;
+Miedzy nogami;hobbit;;;Pasyw;Mozesz przechodzic przez pola na ktorych stoja wieksze od Ciebie jednostki, jednak nie mozesz sie na nich zatrzymywac.;;;
+
+
+Uniki;talent;;;Atut;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz probowac unikac ciosow WW\n(  {roll_symbol} Zr - 2). \nJezeli Ci sie nie uda, poloz {cd_symbol}. Mozesz wydac 1 {ap_symbol} aby zwiekszyc szanse o 4.";;;
+
+Zamach;fire;2;4;Akcja;{roll_symbol}WW+2: Zatakuj wszystkie postacie\n w okol siebie.;Otaczajace {hex_symbol};;
+
+
+Wyssanie zycia;necro;2;2;Akcja: Mag(10);"Zadaj Mag * 1k4 obrazen celowi, i przywroc sobie ta sama wartosc {hp_symbol}.";10 {hex_symbol};;;
+
+
+Parowanie;talent;;;Atut: Bron WW;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz takowy polozyc, by\n sprobowac sparowac cios \n(  {roll_symbol} WW - 2).\nMozesz wydac 1 {ap_symbol}, by zwiekszyc szanse o 4.";;;
+
+
+Sprowokowany;state;0;0;Stan - Niefizyczny;Nie mozesz wykonywac akcji, do poki nie zaatakujesz zrodla prowokacji. \n Na koniec tury mozesz wykonac {roll_symbol}SW aby zdjac pozostale {cd_symbol} z tej karty.;;;
+
+Spowolniony;state;0;0;Stan - Fizyczny;Masz o {charge_symbol} mniej Szybkosci.;;;
+
+Wyssanie zycia;necro;2;3;Akcja: Mag(10);"Zadaj Mag * 1k6 obrazen celowi, i przywroc sobie ta sama wartosc {hp_symbol}.";10 {hex_symbol};;;
+
+
+Aniol Sigmara;pala;1;4;Dar: Mag (7);Twoj cel otrzymuje:\n+1 Sily\n+2 WW\n+3 Odp\n+4 SW.;"6 {hex_symbol}, kazda wartosc pomnoz o Mag.";;
 
 
 
 
-Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;
+
+
+
+
+Zatrucie botulina;state;0;0;Stan - Zatrucie;"Na poczatku swojej tury tracisz 1 {hp_symbol} za kazdy {charge_symbol}.                      Juz zatruty: doloz odpowiednia ilosc {cd_symbol} i {charge_symbol} (max 3).";;;
+Krwawienie;state;0;0;Stan - Fizyczny;Na poczatku tury tracisz 1 {hp_symbol}.\n Cel moze posiadac wiele statusow krwawienia.;;;
+Swieze zombie;necro;3;14;Towarzysz;{damage_symbol} : 1k6.\n 2{ap_symbol} : Atak (1 {hex_symbol}).\n 1{ap_symbol} , po ataku : Cel otrzymuje 'Zatrucie botulina' (1 {charge_symbol} / 2 {cd_symbol}).\n Cel :  {roll_symbol} by uniknac zatrucia.;;;
+
+
+
+Kolczaste rekawice;item;0;0;Zbroja: Rece;"Zapewnia 1 {armor_symbol}.\nGdy otrzymujesz cios z odleglosci 1 {hex_symbol}, atakujacy otrzymuje 1 punkt obrazen (ignoruje {armor_symbol}).";;;
+
+
+Stalowa palka;item;2;0;Bron 1 reczna;"{damage_symbol}: S-3 + 1k4.\nKrytyk: Ogluszasz cel.";;;
+Prosty sztylet;item;2;0;Przedmiot 1 reczny;"{damage_symbol}: S-3 + 1k4.\nKrytyk: {damage_symbol} * 2.\nJezeli trafisz, odzyskujesz 1 {ap_symbol}.";1 {hex_symbol};;
+Prosta proca;item;1;0;Bron 2 reczna;{damage_symbol}: 1 + 1k4\n Przeladowanie: 1 {ap_symbol}\n\n {roll_symbol} Zr podczas przeladowania: Przeladowanie jest darmowe.\n;Sila + 8 {hex_symbol};;
+Zwadziak;item;3;0;Przedmiot 1 reczny;"{damage_symbol}: S-4 + 1k4.\nMozesz traktowac ten przedmiot jako 2 reczny, atak kosztuje wtedy 2 {ap_symbol}. Krytyk: +5, przewroc cel.";2 {hex_symbol};;
+Przyspieszenie;mist;0;1;Akcja szybka: Mag (5);"Oddaj 1 ze swoich {ap_symbol} dowolnej postaci.\n";12;;
+Czaszkostur;item;2;0;Przedmiot 1 reczny;"{damage_symbol}: S-4 + 1k4.\nMasz +2 do testow Magii.";;;
+Mikstura zdrowia;item;1;0;Przedmiot jednorazowy;"Przywroc sobie 1k6 {hp_symbol}.";;;
+Mlot bojowy;item;2;0;Bron: 1 reczna;{damage_symbol}: S-1+1k6.\nKrytyk: Ogluszasz cel na 1 ture.;1 {hex_symbol};;
+Shuriken;item;1;0;Bron: 1 reczna;"{damage_symbol}: 1k4\nPrzeladowanie: 1 {ap_symbol}.\nMozesz traktowac ten przemiot jako 2-reczny, przeladowanie kosztuje wtedy 0 {ap_symbol}.";Sila + 4 {hex_symbol};;
+Skorzany kaftan;item;0;0;Przedmiot: Zbroja;Wymaga 3 Sily.\nZapewnia 1 &.;;
+Znoszona kolczuga;item;0;0;Przedmiot: Zbroja;Wymaga: 4 Sily.\nZapewnia 2 &.;;;
+
+
+
+
+
+
 Czasospowalniacz;item;0;0;Przedmiot uzywalny;"Masz dodatkowa minute na wykonanie ruchu.\nJezeli na tej karcie nie ma {charge_symbol}, mozesz takowy polozyc, aby zdjac {cd_symbol} z dowolnej karty.";;;
-Wiara czyni cuda;pala;0;1;Akcja;"Za kazdym razem gdy uzyjesz Daru, poloz {charge_symbol} na tej karcie. \n2{charge_symbol}: Zyskujesz 1 {ap_symbol}.";;;;
-Zywa Mgla;mist;0;0;Akcja przelaczana;"We mgle wszystkie ataki procz Twoich maja -15.\n\n@: podwajasz efekt mgly, jednak mozesz wykonywac jedynie akcje ruchu.";;;
 Serwis Zwlok;necro;2;3;Akcja;Przywroc Mag*k10 {hp_symbol}.;8 {hex_symbol}, tylko na Towarzysza.;;;
-Sloj Zhen'In;mist;0;0;Przedmiot uzywalny;Roztaczasz mgle na 1 {hex_symbol} wiecej. \n@: Rzuc sloj. Roztacza mgle na 2 {hex_symbol}.;;;
-Dar pokuty;pala;1;2;Dar: Mag(x);{roll_symbol}Mag:\n1: Otrzymujesz 1k6 obrazen.\n 2-6:Nie dzieje sie nic.\n7-9: Zadjesz Mag*1k6 obrazen.\n10+: Zadajesz Mag*1k10 obrazen.;3*Mag {hex_symbol};;
-Patoszarza;fire;1;5;Akcja;"Przemiesc sie o max 9 {hex_symbol}.\n{roll_symbol}K za kazdy cel po drodze: Przegrany upada. \nNa czas szarzy otrzymujesz +20K";9 {hex_symbol};;
-Mlot bojowy;item;2;0;Przedmiot 1 reczny;{damage_symbol}: S+1k6.\nTrafienie: 10% na ogluszenie na 1 ture.;1 {hex_symbol};;
-Ma gadane;hobbit;:3;5;(Re)akcja;"{roll_symbol}Ogl/Sw:\nZagadujesz cel. Traci on 3 {ap_symbol} (teraz lub w swojej turze). \nZwiekszasz szanse o 15 za kazdy wydany {ap_symbol} powyzej 1.)";6 {hex_symbol};;
 Kosciana zbroja;necro;1;1;Re(Akcja);"Poloz na tej karcie 1+Mag {charge_symbol} (max 4) \nZyskujesz 1 pancerza za kazdy {charge_symbol}. \nZdejmij {charge_symbol} za kazdym razem, gdy otrzymasz obrazenia.";;;
-Modlitwa;pala;:4;0;Akcja;Poloz na tej karcie 1 {charge_symbol} za kazdy wydany {ap_symbol}.\nDo konca walki dostajesz +2 do testow Magii za kazdy {charge_symbol}. \nPrzy 3 {charge_symbol} : Zyskujesz 1 dodatkowy {ap_symbol} co ture.;;;
-Seria;mist;0;0;Pasyw;Kazdy trafiony atak w tej samej serii powyzej:\n2: leczy cie za {Mag}.\n3: Ignoruje 1 pancerza.\n6:Pozwala wykonac 1 dodatkowy darmowy atak.;;;
 Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;
 Megamagnez;item;3;4;Przedmiot Ogromny;"{roll_symbol} Int/K: Cel traci dowolny przedmiot, ktory przyciagasz o 1k6 pol w swoja strone. \nZmniejszasz szanse o 2 za kazdy {hex_symbol} pomiedzy wami.";10 {hex_symbol}.;;
 Czasospowalniacz;item;0;0;Przedmiot uzywalny;"Masz dodatkowa minute na wykonanie ruchu.\nJezeli na tej karcie nie ma {charge_symbol}, mozesz takowy polozyc, aby zdjac {cd_symbol} z dowolnej karty.";;; "
@@ -31,3 +64,5 @@ Gadzeciarz;tinker;0;0;Pasyw;"Uzywanie przedmiotow nie bedacych bronia, kosztuje 
 Smola;item;2;-;Przedmiot jednorazowy;"Poloz znacznik na planszy.\nDo konca walki, w odleglosci 2 {hex_symbol} szybkosc naziemnych jednostek jest zmniejszona o 3.\nMozna podpalic.";;;
 Altyleria z Gunad-Dur;item;3;1;Przedmiot duzy;Twoja szybkosc spada do 1.\n{damage_symbol}: 2k8 i 1k8 na otaczajacych {hex_symbol}.\nPrzeladowanie: 2 {ap_symbol}.;20 {hex_symbol};
 Granat Dymny;item;1;1;Przedmiot uzywalny;"Poloz znacznik na planszy.\nDo Twojej nastepnej tury, roztacza on zaslaniajacy widok mgle (3 {hex_symbol}).";Sila + 6 {hex_symbol};;
+
+

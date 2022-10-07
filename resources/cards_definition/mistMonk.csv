@@ -1,0 +1,9 @@
+Sloj Zhen'In;mist;0;0;Przedmiot uzywalny;Roztaczasz mgle na 1 {hex_symbol} wiecej. \n \n1 {ap_symbol}, @: Rzuc sloj na max Sila +3 {hex_symbol}. Roztacza mgle na 2 {hex_symbol}.;;;
+Seria;mist;0;0;Pasyw;Kazdy trafiony atak w tej samej serii powyzej:\n2: Ignoruje 1 {armor_symbol}\n3: Leczy cie za {Mag}.\n4:Pozwala wykonac 1 dodatkowy darmowy atak (raz na ture).;;;
+Mgla wojny;mist;1;0;Akcja przelaczana;"@: Ataki we mgle maja dodatkowe -2, jednak mozesz wykonywac jedynie akcje ruchu. Nie musisz odkrecac tej karty na poczatku swojej tury.";;;
+Roztoczenie - Sublimacja;mist;1;0;Akcja przelaczana;"Roztaczasz mgle na 1+Mag {hex_symbol}. \n We mgle wszystkie ataki procz Twoich maja -1.\n @:Otrzymujesz 2 Sily oraz pancerza za kazdy punkt Magii.";;;
+Tornado;mist;2;4;Akcja: Mag(6);"{roll_symbol}SW/K: Cel upada.";Otaczajace {hex_symbol} we mgle.;;;
+Tunel we mgle;mist;0;2;Akcja;Mozesz przemiescic sie na dowolne zamglone pole, nie prowokujac atakow okazyjnych.;12 {hex_symbol};;;
+Kastety Zhen'In;item;1;0;Bron: 2 x 1 reczna;{damage_symbol}: S - 4 + 1k2.\nMasz +1 do WW.\n Krytyk: Obrazenia +1.;;;
+Atak okazyjny;talent;;;Atut;"Jezeli na tej karcie nie ma {cd_symbol}, gdy przeciwnik porusza sie obok Ciebie, mozesz takowy polozyc, aby wykonac darmowy atak okazyjny.";;;
+Oburecznosc;talent;;;Atut;Mozesz uzywac 2 jednorecznych     broni (bez kar).\nJezeli trafisz pierwsza bronia, atak druga kosztuje 1 {ap_symbol} mniej.;;;

@@ -7,6 +7,14 @@ Podniesienie sie: 1 PA (rzut na ZR). jesli sie nie uda, dodatkowy 1 PA (automaty
 Ocucenie (50%): 3PA.
 Rzut: 1 PA (3 + Sila).
 
+Statusy:
+Przewrocony: Patrz - podniesienie sie.
+Ogluszony: domyslnie 1 tura. Ogluszony nie moze podejmowac akcji.
+Przerazony: domyslnie 1 tura. Cel nie moze podjac akcji procz 2ch akcji ruchu w przeciwnym kierunku od zrodla przerazenia.
+Przygwozdzony: domyslnie do konca walki. Cel nie moze podejmowac akcji ruchu.
+Spowolniony: domyslnie: do konca walki. Cel ma obnizona szybkosc.
+Oslepiony: TBA
+
 Noszenie przedmiotow:
 Maly - 2S
 Duzy - 4S

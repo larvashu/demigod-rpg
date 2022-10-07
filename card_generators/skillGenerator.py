@@ -1,3 +1,4 @@
+import os
 import textwrap
 import matplotlib.pyplot as plt
 import numpy as np
@@ -131,13 +132,16 @@ class SkillGenerator(BaseGenerator):
         self.create_border(ax, p)
 
         ##draw top parameter
-        self.draw_action_points_cost(ax)
+        if skill.type != 'talent' and skill.card_type != "Pasyw" and skill.type != "state":
+            self.draw_action_points_cost(ax)
 
         #draw bottom parameter
-        if skill.card_type == "Towarzysz":
-            self.draw_compation_hp(ax)
-        else:
-            self.draw_cooldown(ax)
+        if skill.type != 'talent' and skill.card_type != "Pasyw" and skill.type != "state":
+            print('tu')
+            if skill.card_type == "Towarzysz":
+                self.draw_compation_hp(ax)
+            else:
+                self.draw_cooldown(ax)
 
         plt.savefig(self.tmp_file, bbox_inches='tight', pad_inches=0, transparent=True)
         temp_image = Image.open(self.tmp_file)
@@ -160,14 +164,16 @@ class SkillGenerator(BaseGenerator):
         self.write_description(temp_image, skill.card_text, skill.range, skill.aoe)
 
         #add ap cost
-        self.refresh_img()
-        plt.close()
-        self.write_ap_cost(temp_image, skill.ap_cost)
+        if skill.card_type != "Pasyw" and skill.type != "state":
+            self.refresh_img()
+            plt.close()
+            self.write_ap_cost(temp_image, skill.ap_cost)
 
-        #add cooldown cost
-        self.refresh_img()
-        plt.close()
-        self.write_cooldown_cost(temp_image, skill.cd_cost)
+        if skill.card_type != "Pasyw" and skill.type != "state":
+            #add cooldown cost
+            self.refresh_img()
+            plt.close()
+            self.write_cooldown_cost(temp_image, skill.cd_cost)
 
         #refresh image
         self.refresh_img()
@@ -181,7 +187,13 @@ class SkillGenerator(BaseGenerator):
 
         #resize
         temp_image = Image.open(self.tmp_file).resize((389, 559))
-        temp_image.save(f'output/skills/{skill.title}.png')
+        print('here')
+        #makedir
+        dir = (f'output/skills/{skill.type}')
+        if not os.path.isdir(dir):
+            os.mkdir(dir)
+        temp_image.save(f'{dir}/{skill.title}.png')
+
 
     #drawing skill methods
     def draw_cooldown(self, ax):
@@ -320,6 +332,50 @@ class SkillGenerator(BaseGenerator):
                                     else:
                                         hs = 285
                                         draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (50,205,50), font=font,
+                                              stroke_width=1, stroke_fill='black')
+
+                                except:
+                                    print('no trudno')
+
+                        if special_char_p['special_char'] == self.armor_symbol:
+                                try:
+                                    prefix = line[0:indic]
+                                    print(f'prefix 2: {prefix}')
+                                    w, _h = font.getsize(prefix)
+                                    # h = 15
+                                    print(f'w, h: {w, h}')
+                                    string = special_char_p['special_char']
+                                    print(string)
+                                    if not rang:
+                                        hs = 265
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (205,92,92),
+                                                  font=font,
+                                                  stroke_width=1, stroke_fill='black')
+                                    else:
+                                        hs = 285
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (205,92,92), font=font,
+                                              stroke_width=1, stroke_fill='black')
+
+                                except:
+                                    print('no trudno')
+
+                        if special_char_p['special_char'] == self.m_armor_symbol:
+                                try:
+                                    prefix = line[0:indic]
+                                    print(f'prefix 2: {prefix}')
+                                    w, _h = font.getsize(prefix)
+                                    # h = 15
+                                    print(f'w, h: {w, h}')
+                                    string = special_char_p['special_char']
+                                    print(string)
+                                    if not rang:
+                                        hs = 265
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (70,130,180),
+                                                  font=font,
+                                                  stroke_width=1, stroke_fill='black')
+                                    else:
+                                        hs = 285
+                                        draw.text(((31 + w), (hs - h + (h * i * multiplier))), string, (70,130,180), font=font,
                                               stroke_width=1, stroke_fill='black')
 
                                 except:

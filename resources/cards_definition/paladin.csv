@@ -1,0 +1,9 @@
+Tarcza prawosci;pala;1;3;Dar (szybki): Mag 6;Blokujesz Mag + {cd_symbol} pkt obrazen.\nGdy tarcza zostanie przebita: Odwroc te karte obrazkiem do dolu.;6 + Mag {hex_symbol};;
+Swiety dotyk;pala;:3;4;Akcja: Mag (7);Przywroc celowi Mag * 1k6 {hp_symbol}. \nPowieksz wartosc o 3 za kazdy wydany {ap_symbol}.;1 {hex_symbol};;
+Dar pokuty;pala;2;4;Dar: Mag(x);{roll_symbol}Mag:\n1-6: Otrzymujesz 1k6 obrazen.\n 7-8:Nie dzieje sie nic.\n9-11: Zadjesz Mag*1k4 obrazen.\n 12+: Zadajesz Mag*1k6 obrazen.;3*Mag {hex_symbol};;
+Modlitwa;pala;X;0;Akcja;Poloz na tej karcie 1 {charge_symbol} za kazdy wydany {ap_symbol}.\nDo konca walki dostajesz +1 do testow Magii za kazdy {charge_symbol}. \nPrzy 5 {charge_symbol} : Zyskujesz 1 dodatkowy {ap_symbol} co ture.;;;
+Aniol Sigmara;pala;1;4;Dar: Mag (7);Twoj cel otrzymuje:\n+1 Sily\n+2 WW\n+3 Odp\n+4 SW.;"6 {hex_symbol}, kazda wartosc pomnoz o Mag.";;
+Wiara czyni cuda;pala;0;1;Akcja;"Za kazdym razem gdy uzyjesz Daru, poloz {charge_symbol} na tej karcie. \n2{charge_symbol} : Zyskujesz 1 {ap_symbol}.";;;;
+Mlot bojowy;item;2;0;Bron: 1 reczna;{damage_symbol}: S-1+1k6.\nKrytyk: Ogluszasz cel na 1 ture.;1 {hex_symbol};;
+Znoszona kolczuga;item;0;0;Przedmiot: Zbroja;Wymaga: 4 Sily.\nZapewnia 2 &.;;;
+Bieglosc - Mloty;talent;;;Atut;"Podczas uzywania mlotow, masz:\n +2 do krytyka\n+1 do obrazen.";;;

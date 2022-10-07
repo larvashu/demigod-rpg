@@ -1,0 +1,4 @@
+Mikstura zdrowia;item;1;0;Przedmiot jednorazowy;"Przywroc sobie 1k6 {hp_symbol}.";;;
+Czasospowalniacz;item;0;0;Przedmiot uzywalny;"Co 5 tur, dostajesz dodatkowy 1{ap_symbol}.\n Jezeli na tej karcie nie ma {charge_symbol}, mozesz takowy polozyc, aby zdjac {cd_symbol} z dowolnej karty.";;;
+Altyleria z Gunad-Dur;item;3;1;Przedmiot duzy;Twoja szybkosc spada do 1.\n{damage_symbol}: 2k8 i 1k8 na otaczajacych {hex_symbol}.\n Przeladowanie: 2 {ap_symbol}.\n Posiada 5 {hp_symbol}.;20 {hex_symbol}.;
+Granat Dymny;item;1;1;Przedmiot uzywalny;"Poloz znacznik na planszy.\nDo Twojej nastepnej tury, roztacza on zaslaniajacy widok mgle (3 {hex_symbol}).";Sila + 6 {hex_symbol};;

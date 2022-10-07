@@ -28,6 +28,7 @@ class BaseGenerator():
     roll_symbol = "ż"
     damage_symbol = "#"
     armor_symbol = "&"
+    m_armor_symbol = "$"
     ImageFile.LOAD_TRUNCATED_IMAGES = True
 
     special_chars_pos = []
@@ -59,6 +60,8 @@ class BaseGenerator():
             text = text.replace('{charge_symbol}', self.charge_symbol)
         if '{armor_symbol}' in text:
             text = text.replace('{armor_symbol}', self.armor_symbol)
+        if '{m_armor_symbol}' in text:
+            text = text.replace('{m_armor_symbol}', self.m_armor_symbol)
         if '{hp_symbol}' in text:
             text = text.replace('{hp_symbol}', self.hp_symbol)
         if '{ap_symbol}' in text:
@@ -112,7 +115,7 @@ class BaseGenerator():
                 print(results)
             text = text[text.index(newline_sign)+len(newline_sign):]
         _copy = 0
-        specials = [self.cd_symbol, self.ap_symbol, self.hex_symbol, self.hp_symbol, self.charge_symbol]
+        specials = [self.cd_symbol, self.ap_symbol, self.hex_symbol, self.hp_symbol, self.charge_symbol, self.armor_symbol, self.m_armor_symbol]
 
         line_nr = 0
         for line in results:

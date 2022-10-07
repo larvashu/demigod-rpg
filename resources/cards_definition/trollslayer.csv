@@ -1,0 +1,13 @@
+Wiatr we wlosach;fire;0;5;Akcja;Twoj nastepny atak kosztuje 2 {ap_symbol} mniej.;;;
+Zew krwi;fire;0;0;Pasyw;"Za kazdym razem gdy zadasz obrazenia, usun 1 {cd_symbol} ze swoich umiejetnosci.";;;
+Zamach;fire;2;4;Akcja;{roll_symbol}WW+2: Zatakuj wszystkie postacie\n w okol siebie.;Otaczajace {hex_symbol};;
+Patoszarza;fire;1;5;Akcja;"Przemiesc sie o max 9 {hex_symbol}.\n{roll_symbol}K za kazdy cel po drodze: Przegrany upada. \nNa czas szarzy otrzymujesz +1K za kazde 3 przebyte {hex_symbol}";9 {hex_symbol};;
+Teraz to mnie wkur...;fire;0;0;Pasyw;Masz +1 WW za kazde 4 brakujace {hp_symbol};;;
+Dwureczny topor;item;3;0;Przedmiot 2 reczny;Wymaga 4 Sily\n{damage_symbol}: S+1k8\nKrytyk: {damage_symbol} +1k4.\n Krytyk: obnizasz {armor_symbol} celu o 1k4.;1 {hex_symbol};;
+Skorzany kaftan;item;0;0;Przedmiot: Zbroja;Wymaga 3 Sily.\nZapewnia 1 &.;;
+Zywotny;talent;;;Atut;"Dostajesz +5 maksymalnego {hp_symbol}. \nDodatkowo, dostajesz +1 {hp_symbol} za kazdym razem gdy rozwijasz postac.";;;
+Parowanie;talent;;;Atut: Bron WW;"Jezeli na tej karcie nie ma {cd_symbol}, mozesz takowy polozyc, by\n sprobowac sparowac cios \n(  {roll_symbol} WW - 10).\nMozesz wydac 1 {ap_symbol}, by zwiekszyc szanse o 20.";;;
+Im wiekszy tym lepszy;fire;0;0;Pasyw;Atak w cel majacy >5 Krzepy wiecej niz Ty, zadaje +Sila obrazen.\nAtak w cel majacy >20 Krzepy wiecej niz Ty, kosztuje 1 {ap_symbol} mniej.;;;
+
+
+
