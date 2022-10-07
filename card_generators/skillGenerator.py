@@ -1,4 +1,3 @@
-import os
 import textwrap
 import matplotlib.pyplot as plt
 import numpy as np
